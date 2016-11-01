@@ -1,0 +1,9 @@
+body {
+    background: #fff;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    background: url(src/images/logo.png);
+}
