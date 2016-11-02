@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     //入口文件
@@ -47,6 +48,10 @@ module.exports = {
     },
 
     plugins: [
-        // new webpack.BannerPlugin('bundle.js注释')
+        new HtmlWebpackPlugin({
+            title: 'demo',
+            filename: 'index.html',
+            template: './index.html'
+        })
     ]
-}
+};
