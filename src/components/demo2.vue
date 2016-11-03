@@ -1,6 +1,6 @@
 <template>
 
-    <div @click="alert()">app.vue</div>
+    <div @click="alert()">demo2.vue</div>
 
     <div>{{msg}}</div>
 
@@ -14,13 +14,12 @@
 
     module.exports = {
 
-            el: '#app',
-            data: {
-                msg: 'vue ok1'
+            data: function() {
+                msg: 'demo2.vue'
             },
             methods: {
                 alert: function() {
-                    alert(1);
+                    alert('demo2.vue');
                 }
             }
 

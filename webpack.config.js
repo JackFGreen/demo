@@ -54,6 +54,6 @@ module.exports = {
             filename: 'index.html',
             template: './index.html'
         }),
-        new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js')
+        new webpack.optimize.CommonsChunkPlugin('common',  'common.js')
     ]
 };
