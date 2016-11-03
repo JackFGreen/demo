@@ -1,9 +1,10 @@
 body {
-    background: #ccc;
+    background: #fff;
 }
 
 .logo {
     width: 100px;
     height: 100px;
     background: url(../images/logo.png) no-repeat center;
+    display: flex;
 }

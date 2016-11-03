@@ -32,6 +32,7 @@ module.exports = {
         }, {
             test: /\.css$/,
             loader: 'style!css!autoprefixer?{browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]}'
+            // loader: 'style!css!autoprefixer?{browsers: ["last 2 versions","> 0.03%","Firefox >= 20","ie 8"]}'
         }, {
             test: /\.scss$/,
             loader: 'style!css!sass?sourceMap'
@@ -52,6 +53,7 @@ module.exports = {
             title: 'demo',
             filename: 'index.html',
             template: './index.html'
-        })
+        }),
+        new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js')
     ]
 };
