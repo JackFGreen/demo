@@ -1,28 +1,28 @@
 <template>
-    
+
     <p>home</p>
 
-    <a v-link></a>
+    <a v-link="{ path: '/demo1'}">demo1</a>
+    <a v-link="{ path: '/demo2'}">demo2</a>
+
 
     <common></common>
 
 </template>
 
 <script type="text/javascript">
-var common = require('./common.vue');
+var common = require('./common');
 
-var routes = require('../routes.js');
+var routes = require('../routes');
 console.log(routes);
 
-var $data = {};
+var $data = {
+    routes: routes
+};
 
 module.exports = {
 
     data: function() {
-
-        for (var k in routes) {
-            // console.log(k);
-        }
 
         return $data;
     },
@@ -31,5 +31,5 @@ module.exports = {
         common
     }
 }
-    
+
 </script>

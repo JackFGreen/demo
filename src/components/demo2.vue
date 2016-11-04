@@ -12,10 +12,12 @@
 
 <script>
 
+require('../service/service');
+
     module.exports = {
 
             data: function() {
-                msg: 'demo2.vue'
+                return {}
             },
             methods: {
                 alert: function() {
@@ -26,11 +28,16 @@
     }
 </script>
 
-<style lang="sass">
+<style scoped lang="sass">
 
         div {
-            color: red;
+            color: #ccc;
             display: flex;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
         }
 
 </style>

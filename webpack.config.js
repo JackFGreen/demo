@@ -19,12 +19,13 @@ module.exports = {
     },
     resolve: {
         // require时省略的扩展名，如：require('module') 不需要module.js
-        extensions: ['', '.js', '.vue', 'scss'],
+        extensions: ['', '.js', '.vue', '.scss'],
         // 别名，可以直接使用别名来代表设定的路径以及其他
         alias: {
 
         }
     },
+    devtool: 'eval-source-map',
     module: {
         loaders: [{
             test: /\.vue$/,

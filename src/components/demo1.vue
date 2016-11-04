@@ -12,10 +12,14 @@
 
 <script>
 
+var $data = {}
+
     module.exports = {
 
             data: function() {
-                msg: 'demo1.vue ok'
+                return {
+                    msg: 'demo1.vue ok'
+                }
             },
             methods: {
                 alert: function() {
@@ -26,7 +30,7 @@
     }
 </script>
 
-<style lang="sass">
+<style scoped lang="sass">
 
         div {
             color: red;
