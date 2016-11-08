@@ -1,6 +1,6 @@
 <template>
 
-    <!-- <div @click="alert()">demo1.vue</div> -->
+    <div @click="alert()">demo1.vue</div>
 
     <div>{{msg}}</div>
 
@@ -33,7 +33,7 @@ var $data = {}
 <style scoped lang="sass">
 
         div {
-            color: red;
+            color: pink;
             display: flex;
         }
 

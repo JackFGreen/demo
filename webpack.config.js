@@ -1,18 +1,14 @@
+var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebpackDevServer = require('webpack-dev-server');
-
-new WebpackDevServer({}, {}).listen(8888);
 
 module.exports = {
     //入口文件
     entry: [
-        'webpack-dev-server/client?http://localhost:8080/',
-        'webpack/hot/dev-server',//热加载
-        './src/main'
+        path.resolve(__dirname, './src/main')
     ],
     output: {
-        path: './dist',
+        path: path.resolve(__dirname, './dist'),
         publicPath: '',
         filename: '[name].[hash].js',//入口文件
         chunkFilename: '[name].[chunkhash].js'//其他文件
@@ -26,8 +22,6 @@ module.exports = {
 
         }
     },
-    //生成sourceMap
-    devtool: 'eval-source-map',
 
     module: {
         loaders: [{
@@ -35,7 +29,7 @@ module.exports = {
             loader: 'vue'
         }, {
             test: /\.css$/,
-            loader: 'style!css!autoprefixer?{browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]}'
+            loader: 'style!css?sourceMap!autoprefixer?{browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]}'
                 // loader: 'style!css!autoprefixer?{browsers: ["last 2 versions","> 0.03%","Firefox >= 20","ie 8"]}'
         }, {
             test: /\.scss$/,
@@ -56,13 +50,12 @@ module.exports = {
     plugins: [
         //通用模块单独打包
         new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js'),
-        //热加载插件
-        new webpack.HotModuleReplacementPlugin(),
+        
         //生成入口文件并引入js文件
         new HtmlWebpackPlugin({
             title: 'demo',
             filename: 'index.html',
-            template: './index.html'
+            template: path.resolve(__dirname, './index.html')
         })
     ]
 };

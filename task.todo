@@ -1,10 +1,12 @@
  ☐ 局部刷新
  ☐ 打包
  ☐ 压缩
- ☐ 端口替换
+ ✔ 端口替换 @done (16-11-09 00:55)
  ☐ dist清空
  ✔ img-hash @done (16-11-03 10:37)
  ☐ css-prefixer
+ ☐ css独立
  ✔ css作用域-scoped @done (16-11-04 18:50)
- ☐ Vue.use(VueRouter)
  ✔ home-routes @done (16-11-04 18:50)
+ ☐ loader-query
+ ☐ 公用模块
