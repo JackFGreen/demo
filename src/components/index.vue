@@ -33,3 +33,9 @@ module.exports = {
 }
 
 </script>
+
+<style scoped lang="scss">
+    a {
+        color: red;
+    }
+</style>

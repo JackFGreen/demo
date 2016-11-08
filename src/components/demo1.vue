@@ -1,6 +1,6 @@
 <template>
 
-    <div @click="alert()">demo1.vue</div>
+    <!-- <div @click="alert()">demo1.vue</div> -->
 
     <div>{{msg}}</div>
 
