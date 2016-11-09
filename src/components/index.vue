@@ -2,19 +2,13 @@
 
     <p>home</p>
 
-    <a v-link="{ path: '/demo1'}">demo1</a>
-    <a v-link="{ path: '/demo2'}">demo2</a>
-
-
-    <common></common>
+    <a v-for="obj in routes" href="#!{{obj.fullPath}}">{{obj.name}}</a>
 
 </template>
 
 <script type="text/javascript">
-var common = require('./common');
-
 var routes = require('../routes');
-console.log(routes);
+console.log(routes)
 
 var $data = {
     routes: routes
@@ -25,17 +19,14 @@ module.exports = {
     data: function() {
 
         return $data;
-    },
-
-    components: {
-        common
     }
 }
 
 </script>
 
 <style scoped lang="scss">
-    a {
-        color: red;
-    }
+a {
+    display: block;
+    line-height: 30px;
+}
 </style>

@@ -1,25 +1,13 @@
-var Vue = require('vue');
 var VueRouter = require('vue-router');
-var routes = require('./routes');
-
-Vue.use(VueRouter);
-
+var Vue = require('vue').use(VueRouter);
 var App = Vue.extend({});
 var router = new VueRouter();
+var routes = require('./routes');
 
 require('./scss/layout');
 
-router.map(routes);
+router.map(routes).redirect({'*': '/index'}).afterEach(function(arg) {
+    document.title = arg.to.name;
+}).start(App, '#app');
 
-router.redirect({
-    '*': '/index'
-});
-
-router.start(App, '#app');
-
-console.log(App);
-console.log(router);
-console.log(routes);
-
-
-
+console.log(router)

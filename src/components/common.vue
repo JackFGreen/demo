@@ -1,5 +1,7 @@
 <template>
-    
+
+    <p>common</p>
+    <p>common</p>
     <p>common</p>
 
 
@@ -16,5 +18,5 @@ module.exports = {
         return $data;
     }
 }
-    
+
 </script>

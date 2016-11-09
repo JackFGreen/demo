@@ -29,11 +29,12 @@ module.exports = {
             loader: 'vue'
         }, {
             test: /\.css$/,
-            loader: 'style!css?sourceMap!autoprefixer?{browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]}'
+            loader: 'style!css'
+            // loader: 'style!css!autoprefixer?{browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]}'
                 // loader: 'style!css!autoprefixer?{browsers: ["last 2 versions","> 0.03%","Firefox >= 20","ie 8"]}'
         }, {
             test: /\.scss$/,
-            loader: 'style!css!sass?sourceMap'
+            loader: 'style!css!sass'
         }, {
             test: /\.(png|jpg|gif)$/,
             loader: 'url?mimetype=image/png&limit=8192&name=images/[name].[hash].[ext]'
@@ -43,14 +44,17 @@ module.exports = {
 
     vue: {
         loaders: {
-            scss: 'style!css!sass?sourceMap'
+            scss: 'style!css!sass'
+        },
+        autoprefixer: {
+            // browsers: ['last 2 versions']
         }
     },
 
     plugins: [
         //通用模块单独打包
         new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js'),
-        
+
         //生成入口文件并引入js文件
         new HtmlWebpackPlugin({
             title: 'demo',

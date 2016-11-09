@@ -33,7 +33,7 @@ var $data = {}
 <style scoped lang="sass">
 
         div {
-            color: pink;
+            color: red;
             display: flex;
         }
 
