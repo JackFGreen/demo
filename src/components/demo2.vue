@@ -4,7 +4,7 @@
 
     <div>{{msg}}</div>
 
-    <img src="../images/logo.png">
+    <img src="../images/logo.jpeg">
 
     <div class="logo"></div>
 
