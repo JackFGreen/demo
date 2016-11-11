@@ -6,7 +6,7 @@
 
     <img src="../images/logo.jpeg">
 
-    <div class="logo"></div>
+    <!-- <div class="logo"></div> -->
 
 </template>
 
