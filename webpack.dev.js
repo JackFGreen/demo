@@ -22,7 +22,7 @@ new WebpackDevServer(webpack(config), {
         color: true,
         chunks: false
     }
-}).listen(port);
+}).listen(port, '10.6.40.165');
 
 
 

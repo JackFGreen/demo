@@ -2,7 +2,10 @@
 
     <p>common</p>
     <p>common</p>
-    <p>common</p>
+    <p>{{test}}</p>
+    <p>{{test}}</p>
+    <p>{{test}}</p>
+    <p>{{test}}</p>
 
 
 </template>
@@ -16,7 +19,9 @@ module.exports = {
     data: function() {
 
         return $data;
-    }
+    },
+
+    props: ['test']
 }
 
 </script>

@@ -1,12 +1,14 @@
 <template>
 
-    <div @click="alert()">demo1.vue</div>
+    <div @click="test()">demo1.vue</div>
 
     <div>{{msg}}</div>
 
     <img src="../images/logo.jpeg">
 
     <!-- <div class="logo"></div> -->
+
+    <commom v-bind:test="msg"></commom>
 
 </template>
 
@@ -22,9 +24,13 @@ var $data = {}
                 }
             },
             methods: {
-                alert: function() {
-                    alert('demo1');
+                test: function() {
+                    this.msg = '111';
                 }
+            },
+
+            components: {
+                commom: require('./common.vue')
             }
 
     }

@@ -4,8 +4,8 @@ module.exports = {
     '/index': {
         name: '主页',
         component: function(resolve) {
-            require.ensure([], function () {
-                resolve(require('./components/index'));
+            require.ensure(['./components/index'], function (require) {
+                require(['./components/index'], resolve);
             }, 'components/index');
         }
     },
@@ -13,8 +13,8 @@ module.exports = {
     '/demo1': {
         name: 'Demo-1',
         component: function(resolve) {
-            require.ensure([], function () {
-                resolve(require('./components/demo1'));
+            require.ensure(['./components/demo1'], function (require) {
+                require(['./components/demo1'], resolve);
             }, 'components/demo1');
         }
     },
@@ -22,8 +22,8 @@ module.exports = {
     '/demo2': {
         name: 'Demo-2',
         component: function(resolve) {
-            require.ensure([], function () {
-                resolve(require('./components/demo2'));
+            require.ensure(['./components/demo2'], function (require) {
+                require(['./components/demo2'], resolve);
             }, 'components/demo2');
         }
     },
@@ -31,8 +31,8 @@ module.exports = {
     '/common': {
         name: 'common',
         component: function(resolve) {
-            require.ensure([], function () {
-                resolve(require('./components/common'));
+            require.ensure(['./components/common'], function (require) {
+                require(['./components/common'], resolve);
             }, 'components/common');
         }
     }
