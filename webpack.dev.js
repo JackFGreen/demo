@@ -1,9 +1,11 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config.js');
+
 var ip = require('ip');
 var open = require('open');
 var qrcode = require('qrcode-terminal');
+
+var config = require('./webpack.config.js');
 
 var port = 8888;
 var localhost = ip.address();
@@ -15,7 +17,19 @@ config.entry.unshift(
 );
 
 //生成sourceMap
-config.devtool = 'eval-source-map';
+// config.devtool = 'eval-source-map';
+
+config.module.loaders.forEach(function(el) {
+    if (/sass/.test(el.loader)) {
+        el.loader = 'style!css?sourceMap!sass';
+    }
+});
+
+// console.log(config.vue.loaders.scss);
+// config.vue.loaders.scss = 'style!css?sourceMap!sass?sourceMap';
+// console.log(config.vue.loaders.scss);
+
+console.log(config);
 
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
@@ -30,7 +44,11 @@ new WebpackDevServer(webpack(config), {
 }).listen(port, localhost, function(err) {
 
     qrcode.generate(startPage, {small: true });
-    open(startPage);
+
+    if (!/192\.168/.test(localhost)) {
+
+        open(startPage, 'chrome');
+    }
 });
 
 

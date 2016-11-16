@@ -10,4 +10,4 @@ router.map(routes).redirect({'*': '/index'}).afterEach(function(arg) {
     document.title = arg.to.name;
 }).start(App, '#app');
 
-console.log(router)
+console.log(router);

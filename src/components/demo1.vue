@@ -6,7 +6,7 @@
 
     <img src="../images/logo.jpeg">
 
-    <!-- <div class="logo"></div> -->
+    <div class="logo"></div>
 
     <commom v-bind:test="msg"></commom>
 
@@ -39,7 +39,7 @@
     }
 </script>
 
-<style scoped lang="sass">
+<style scoped lang="scss">
 
         div {
             color: red;

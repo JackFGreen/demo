@@ -2,7 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+// var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     //入口文件
@@ -21,7 +21,8 @@ module.exports = {
         extensions: ['', '.js', '.vue', '.scss'],
         // 别名，可以直接使用别名来代表设定的路径以及其他
         alias: {
-
+            // 'vue': 'vue/dist/vue.min.js',
+            // 'vue-router': 'vue-router/dist/vue-router.min.js'
         }
     },
 
@@ -31,12 +32,13 @@ module.exports = {
             loader: 'vue'
         }, {
             test: /\.css$/,
-            loader: 'style!css?sourceMap'
+            loader: 'style!css'
             // loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
         }, {
             test: /\.scss$/,
-            // loader: 'style!css?sourceMap!sass?sourceMap'
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap')
+            loader: 'style!css!sass'
+            // loader: 'style!css?sourceMap!sass'
+            // loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap', 'sass-loader')
         }, {
             test: /\.(png|gif|jpe?g)$/,
             loader: 'url',
@@ -51,6 +53,7 @@ module.exports = {
 
     vue: {
         loaders: {
+            // scss: 'style!css!sass'
             scss: 'style!css?sourceMap!sass?sourceMap'
         }
     },
@@ -62,7 +65,7 @@ module.exports = {
 
     plugins: [
         //提取require(xxx.scss)
-        new ExtractTextPlugin('layout.[contenthash].css'),
+        // new ExtractTextPlugin('./css/layout.[contenthash].css'),
         //通用模块单独打包
         new webpack.optimize.CommonsChunkPlugin('vendor',  'vendor.js'),
 
@@ -70,7 +73,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'demo',
             filename: 'index.html',
-            template: path.resolve(__dirname, './index.html')
+            template: path.resolve(__dirname, './index.html'),
+            favicon: path.resolve(__dirname, 'src/images/favicon.ico')
         })
     ]
 };
