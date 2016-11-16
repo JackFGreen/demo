@@ -13,19 +13,22 @@
 </template>
 
 <script>
-require('../scss/_global.scss');
-var $data = {}
+    require('../scss/_global.scss');
+
+    var $data = {
+        msg: {
+            msg: 'demo1.vue ok'
+        }
+    }
 
     module.exports = {
 
             data: function() {
-                return {
-                    msg: 'demo1.vue ok'
-                }
+                return $data;
             },
             methods: {
                 test: function() {
-                    this.msg = '111';
+                    $data.msg = '111';
                 }
             },
 

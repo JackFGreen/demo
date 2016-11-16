@@ -17,7 +17,7 @@ var $data = {};
 module.exports = {
 
     data: function() {
-
+        console.log(this.test)
         return $data;
     },
 
