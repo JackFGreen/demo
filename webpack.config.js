@@ -7,13 +7,13 @@ module.exports = {
     //入口文件
     entry: {
         lib: ['vue', 'vue-router'],
-        app: [path.resolve(__dirname, './src/app')],
-        common: [path.resolve(__dirname, './src/service/service')]
+        service: [path.resolve(__dirname, './src/service/service')],
+        app: [path.resolve(__dirname, './src/app')]
     },
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '',
-        filename: '[name].[hash].js',
+        filename: '[name].[chunkhash].js',
         chunkFilename: '[name].[chunkhash].js'
     },
 
@@ -62,24 +62,17 @@ module.exports = {
 
     plugins: [
         //通用模块单独打包
-        // new webpack.optimize.CommonsChunkPlugin('lib',  'lib.js'),
-        // new webpack.optimize.CommonsChunkPlugin('common',  'common.[chunkhash].js'),
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['lib', 'common']
+            names: ['lib', 'service', 'vender']
         }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'lib'
-        // }),
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'common'
-        // }),
 
         //生成入口文件并引入js文件
         new HtmlWebpackPlugin({
             title: 'demo',
             filename: 'index.html',
             template: path.resolve(__dirname, './index.html'),
-            favicon: path.resolve(__dirname, 'src/images/favicon.ico')
+            favicon: path.resolve(__dirname, 'src/images/favicon.ico'),
+            chunksSortMode: 'dependency'
         })
     ]
 };
