@@ -1,28 +1,24 @@
 var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config.js');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-var port = 8888;
+config.module.loaders.forEach(function(el) {
+    if (/css$/.test(el.loader)) {
+        el.loader = ExtractTextPlugin.extract('style-loader', 'css-loader');
+    }
+    if (/sass$/.test(el.loader)) {
+        el.loader = ExtractTextPlugin.extract('style-loader', 'css-loader', 'sass-loader');
+    }
+});
 
-config.entry.unshift(
-    'webpack-dev-server/client?http://localhost:'+ port +'/',//自动刷新
-    'webpack/hot/dev-server' //热模块替换
-);
+//提取入口文件中 require(xxx.scss)
+config.plugins.push(new ExtractTextPlugin('./css/layout.[contenthash].css'));
 
-//生成sourceMap
-config.devtool = 'eval-source-map';
-
-config.plugins.push(new webpack.HotModuleReplacementPlugin());
+//压缩
+config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    compress: {
+        warnings: false
+    }
+}));
 
 module.exports = config;
-
-new WebpackDevServer(webpack(config), {
-    hot: true,
-    stats: {
-        color: true,
-        chunks: false
-    }
-}).listen(port);
-
-
-

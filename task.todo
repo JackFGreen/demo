@@ -1,11 +1,11 @@
  ✔ 热模块替换 .vue文件要加上script标签，否则会失败 @done (16-11-09 15:11)
- ☐ 打包
- ☐ 压缩
+ ✔ 压缩 @done (16-11-17 19:40)
+ ☐ 只针对修改的文件
  ☐ dist清空
  ☐ 公用模块
- ☐ ip-自动替换
+ ✔ ip-自动替换 @done (16-11-17 19:26)
  ✔ 端口替换 @done (16-11-09 00:55)
- ☐ 分离配置
+ ✔ 分离配置 @done (16-11-17 19:24)
 
 
 图片
@@ -16,7 +16,7 @@
 css
  ✔ css作用域-scoped @done (16-11-04 18:50)
  ☐ css-prefixer  require无用
- ☐ css-打包后独立  .vue中require无用
+ ✔ css-打包后独立-入口文件中  .vue中require无用 @done (16-11-17 19:25)
  ✔ scss sourceMap  lang="scss"  lang="sass" .vue css map第一行 @done (16-11-17 00:39)
 
 路由
@@ -29,5 +29,5 @@ loader
  ☐ 请求代理
 
  ☐ markdown-vue
- 
+
  ☐ vue-dialog
