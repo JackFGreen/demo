@@ -1,6 +1,6 @@
 var VueRouter = require('vue-router');
-var Vue = require('vue').use(VueRouter);
-var App = Vue.extend({});
+var Vue = require('vue');
+var App = Vue.use(VueRouter).extend({});
 var router = new VueRouter();
 var routes = require('./routes');
 

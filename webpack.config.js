@@ -6,8 +6,11 @@ var autoprefixer = require('autoprefixer');
 module.exports = {
     //入口文件
     entry: {
-        lib: ['vue', 'vue-router'],
-        service: [path.resolve(__dirname, './src/service/service')],
+        vue: ['vue', 'vue-router'],
+        service: [
+            path.resolve(__dirname, './src/service/service'),
+            path.resolve(__dirname, './src/service/service1')
+        ],
         app: [path.resolve(__dirname, './src/app')]
     },
     output: {
@@ -63,7 +66,7 @@ module.exports = {
     plugins: [
         //通用模块单独打包
         new webpack.optimize.CommonsChunkPlugin({
-            names: ['lib', 'service', 'vender']
+            names: ['vue', 'service', 'vendor']
         }),
 
         //生成入口文件并引入js文件
@@ -72,7 +75,18 @@ module.exports = {
             filename: 'index.html',
             template: path.resolve(__dirname, './index.html'),
             favicon: path.resolve(__dirname, 'src/images/favicon.ico'),
-            chunksSortMode: 'dependency'
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true
+            }/*,
+            chunks: ['']
+            chunksSortModel: function(a, b) {
+                var index = { 'topic': 1, 'react': 3, 'jquery': 2 },
+                    aI = index[a.origins[0].name],
+                    bI = index[b.origins[0].name];
+                return aI && bI ? bI - aI : 1;
+            }*/
         })
     ]
 };
