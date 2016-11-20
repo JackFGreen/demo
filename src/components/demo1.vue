@@ -13,8 +13,6 @@
 </template>
 
 <script>
-    require('../scss/_global.scss');
-
     var $data = {
         msg: {
             msg: 'demo1.vue ok'
@@ -40,7 +38,6 @@
 </script>
 
 <style scoped lang="scss">
-
         div {
             color: red;
             display: flex;

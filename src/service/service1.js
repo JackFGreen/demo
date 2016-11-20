@@ -25,10 +25,6 @@ var validator = {
  * @param val mixed
  */
 var validate = function(target, val) {
-
+    console.log(1);
 };
 
-/**
- * 定义指令
- */
-Vue.directive('validate', {});

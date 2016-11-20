@@ -3,20 +3,25 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
 
+var getpostcss = function() {
+    var postcss = [
+        autoprefixer({
+            browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]
+        })
+    ];
+    console.log(postcss);
+    return postcss;
+};
+
 module.exports = {
     //入口文件
-    entry: {
-        vue: ['vue', 'vue-router'],
-        service: [
-            path.resolve(__dirname, './src/service/service'),
-            path.resolve(__dirname, './src/service/service1')
-        ],
-        app: [path.resolve(__dirname, './src/app')]
-    },
+    entry: [
+        path.resolve(__dirname, './src/app')
+    ],
     output: {
         path: path.resolve(__dirname, './dist'),
-        publicPath: '',
-        filename: '[name].[chunkhash].js',
+        // publicPath: 'cdn.com',
+        filename: '[name].[hash].js',
         chunkFilename: '[name].[chunkhash].js'
     },
 
@@ -39,7 +44,7 @@ module.exports = {
             loader: 'style!css'
         }, {
             test: /\.scss$/,
-            loader: 'style!css!sass'
+            loader: 'style!css!sass!postcss'
         }, {
             test: /\.(png|gif|jpe?g)$/,
             loader: 'url',
@@ -55,20 +60,17 @@ module.exports = {
     vue: {
         loaders: {
             scss: 'style!css!sass'
-        }
+        },
+        postcss: getpostcss()
     },
 
-    autoprefixer: {
-        // ["last 2 versions","> 0.03%","Firefox >= 20","ie 8"]
-        browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]
-    },
+    postcss: getpostcss(),
+
+    // autoprefixer: {
+    //     browsers: browsers
+    // },
 
     plugins: [
-        //通用模块单独打包
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vue', 'service', 'vendor']
-        }),
-
         //生成入口文件并引入js文件
         new HtmlWebpackPlugin({
             title: 'demo',
@@ -79,14 +81,7 @@ module.exports = {
                 removeComments: true,
                 collapseWhitespace: true,
                 removeAttributeQuotes: true
-            }/*,
-            chunks: ['']
-            chunksSortModel: function(a, b) {
-                var index = { 'topic': 1, 'react': 3, 'jquery': 2 },
-                    aI = index[a.origins[0].name],
-                    bI = index[b.origins[0].name];
-                return aI && bI ? bI - aI : 1;
-            }*/
+            }
         })
     ]
 };

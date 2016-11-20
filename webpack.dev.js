@@ -11,7 +11,7 @@ var port = 8888;
 var localhost = ip.address();
 var startPage = 'http://' + localhost + ':' + port;
 
-config.entry.app.unshift(
+config.entry.unshift(
     'webpack-dev-server/client?' + startPage +'/',//自动刷新
     'webpack/hot/dev-server' //热模块替换
 );
@@ -21,8 +21,8 @@ config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.devtool = 'eval-source-map';
 
 config.module.loaders.forEach(function(el) {
-    if (/sass$/.test(el.loader)) {
-        el.loader = 'style!css?sourceMap!sass';
+    if (el.test.toString() === /\.scss$/.toString()) {
+        el.loader = 'style!css?sourceMap!sass?sourceMap!postcss';
     }
 });
 

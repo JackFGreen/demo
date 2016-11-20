@@ -1,3 +1,5 @@
+var Vue = require('vue');
+
 /**
  * 验证规则
  *
