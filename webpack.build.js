@@ -18,9 +18,9 @@ config.entry = {
 config.output.filename = '[name].[chunkhash].js';
 
 config.module.loaders.forEach(function(el) {
-    if (el.test.toString() === /\.css$/.toString()) {
-        el.loader = ExtractTextPlugin.extract('style', 'css');
-    }
+    // if (el.test.toString() === /\.css$/.toString()) {
+    //     el.loader = ExtractTextPlugin.extract('style', 'css');
+    // }
     if (el.test.toString() === /\.scss$/.toString()) {
         el.loader = ExtractTextPlugin.extract('style', 'css!sass!postcss');
     }

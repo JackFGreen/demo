@@ -2,10 +2,10 @@
 
     <p>common</p>
     <p>common</p>
-    <p>{{test}}</p>
-    <p>{{test}}</p>
-    <p>{{test}}</p>
-    <p>{{test}}</p>
+    <p>{{test.msg}}</p>
+    <p>{{test.msg}}</p>
+    <p>{{test.msg}}</p>
+    <p @click="change()">{{test.msg}}</p>
 
 
 </template>
@@ -21,7 +21,18 @@ module.exports = {
         return $data;
     },
 
-    props: ['test']
+    props: ['test'],
+
+    methods: {
+        change: function(callback) {
+            var _this = this;
+            _this.test.msg = '222';
+
+            if (typeof callback === 'function') {
+                callback();
+            }
+        }
+    }
 }
 
 </script>

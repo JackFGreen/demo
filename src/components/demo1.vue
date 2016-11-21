@@ -1,20 +1,22 @@
 <template>
 
-    <div @click="test()">demo1.vue</div>
+    <div @click="change()">demo1.vue</div>
 
-    <div>{{msg}}</div>
+    <div @click="callChild()">{{test.msg}}</div>
 
     <img src="../images/logo.jpeg">
 
     <div class="logo"></div>
 
-    <commom v-bind:test="msg"></commom>
+    <common v-bind:test="test"></common>
 
 </template>
 
 <script>
+var common = require('./common.vue');
+
     var $data = {
-        msg: {
+        test: {
             msg: 'demo1.vue ok'
         }
     }
@@ -25,13 +27,23 @@
                 return $data;
             },
             methods: {
-                test: function() {
-                    $data.msg = '111';
+                change: function() {
+                    $data.test.msg = '111';
+                },
+
+                callChild: function() {
+                    common.methods.change(function(){
+
+                        console.log($data.test);
+
+                    });
+
                 }
+
             },
 
             components: {
-                commom: require('./common.vue')
+                common: common
             }
 
     }
