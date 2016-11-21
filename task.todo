@@ -16,7 +16,7 @@
 
 css
  ✔ css作用域-scoped @done (16-11-04 18:50)
- ☐ css-prefixer  build无用
+ ☐ css-prefixer  UglifyJsPlugin会把browsers设成默认值
  ✔ css-打包后独立-入口文件中  .vue中require无用 @done (16-11-17 19:25)
  ✔ scss sourceMap  lang="scss"  lang="sass" .vue css map第一行 @done (16-11-17 00:39)
 
