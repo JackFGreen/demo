@@ -9,7 +9,6 @@ var getpostcss = function() {
             browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]
         })
     ];
-    console.log(postcss);
     return postcss;
 };
 
@@ -61,6 +60,7 @@ module.exports = {
 
     },
 
+    //vue加配置
     vue: {
         loaders: {
             scss: 'style!css!sass'
@@ -70,17 +70,13 @@ module.exports = {
 
     postcss: getpostcss(),
 
-    // autoprefixer: {
-    //     browsers: browsers
-    // },
-
     plugins: [
-        //生成入口文件并引入js文件
+        //生成入口文件并引入js, css等文件
         new HtmlWebpackPlugin({
             title: 'demo',
             filename: 'index.html',
             template: path.resolve(__dirname, './index.html'),
-            favicon: path.resolve(__dirname, 'src/images/favicon.ico'),
+            favicon: path.resolve(__dirname, 'src/images/favicon1.ico'),
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,

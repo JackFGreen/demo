@@ -12,12 +12,12 @@ var localhost = ip.address();
 var startPage = 'http://' + localhost + ':' + port;
 
 config.entry.unshift(
-    'webpack-dev-server/client?' + startPage +'/',//自动刷新
+    'webpack-dev-server/client?' + startPage + '/', //自动刷新
     'webpack/hot/dev-server' //热模块替换
 );
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
-//生成sourceMap
+//生成sourceMap   sass, css, vue都要加
 config.devtool = 'eval-source-map';
 
 config.module.loaders.forEach(function(el) {
@@ -32,20 +32,22 @@ module.exports = config;
 
 new WebpackDevServer(webpack(config), {
     hot: true,
-    // historyApiFallback: false,
     stats: {
         color: true,
         chunks: false
     }
 }).listen(port, localhost, function(err) {
 
-    qrcode.generate(startPage, {small: true });
+    if (err) {
+        console.log(err);
+        return;
+    }
+    console.log('Listening at ' + startPage);
+
+    qrcode.generate(startPage, { small: true });
 
     if (!/(192\.168)|(10\.6)/.test(localhost)) {
 
         open(startPage, 'chrome');
     }
 });
-
-
-

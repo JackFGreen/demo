@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
 require('../service/service');
 
     module.exports = {
@@ -29,7 +28,6 @@ require('../service/service');
 </script>
 
 <style scoped lang="scss">
-
         div {
             color: #ccc;
             display: flex;
