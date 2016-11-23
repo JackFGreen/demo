@@ -13,6 +13,13 @@
 <script>
 require('../service/service');
 
+// var $ = require('jquery');
+
+console.log($)
+$('.logo').click(function(event) {
+    alert(1)
+});
+
     module.exports = {
 
             data: function() {

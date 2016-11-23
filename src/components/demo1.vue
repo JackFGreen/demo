@@ -13,7 +13,7 @@
 </template>
 
 <script>
-var common = require('./common.vue');
+import common from './common.vue';
 
     var $data = {
         test: {

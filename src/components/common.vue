@@ -11,12 +11,37 @@
 </template>
 
 <script type="text/javascript">
+import test from '../service/service1'
+
+test();
+console.log(typeof test)
+
+// service1();
 
 var $data = {};
 
-module.exports = {
+// module.exports = {
 
-    data: function() {
+//     data: function() {
+//         console.log(this.test)
+//         return $data;
+//     },
+
+//     props: ['test'],
+
+//     methods: {
+//         change: function(callback) {
+//             var _this = this;
+//             _this.test.msg = '222';
+
+//             if (typeof callback === 'function') {
+//                 callback();
+//             }
+//         }
+//     }
+// }
+export default {
+    data () {
         console.log(this.test)
         return $data;
     },
@@ -24,15 +49,17 @@ module.exports = {
     props: ['test'],
 
     methods: {
-        change: function(callback) {
+        change (callback) {
             var _this = this;
             _this.test.msg = '222';
 
             if (typeof callback === 'function') {
                 callback();
             }
+
         }
     }
 }
+
 
 </script>

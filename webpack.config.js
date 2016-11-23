@@ -19,7 +19,7 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, './dist'),
-        // publicPath: 'cdn.com',
+        publicPath: '',
         filename: '[name].[hash].js',
         chunkFilename: '[name].[chunkhash].js'
     },
@@ -30,8 +30,16 @@ module.exports = {
         // 别名，可以直接使用别名来代表设定的路径以及其他
         alias: {
             'vue': 'vue/dist/vue.min.js',
-            'vue-router': 'vue-router/dist/vue-router.min.js'
+            'vue-router': 'vue-router/dist/vue-router.min.js',
+            'jquery': 'jquery/dist/jquery.min'
         }
+    },
+
+    //引用的外部文件不打包
+    externals: {
+        // 'vue': 'vue/dist/vue.min.js',
+        // 'vue-router': 'vue-router/dist/vue-router.min.js'
+        // 'jquery': 'window.jquery'
     },
 
     module: {
@@ -71,6 +79,11 @@ module.exports = {
     postcss: getpostcss(),
 
     plugins: [
+        new webpack.ProvidePlugin({
+            jQuery: "jquery",
+            $: "jquery"
+        }),
+
         //生成入口文件并引入js, css等文件
         new HtmlWebpackPlugin({
             title: 'demo',

@@ -15,7 +15,11 @@ config.entry.unshift(
     'webpack-dev-server/client?' + startPage + '/', //自动刷新
     'webpack/hot/dev-server' //热模块替换
 );
-config.plugins.push(new webpack.HotModuleReplacementPlugin());
+config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    //报错不会中断webpack
+    new webpack.NoErrorsPlugin()
+);
 
 //生成sourceMap   sass, css, vue都要加
 config.devtool = 'eval-source-map';
@@ -31,10 +35,18 @@ config.vue.loaders.scss = 'style!css?sourceMap!sass?sourceMap';
 module.exports = config;
 
 new WebpackDevServer(webpack(config), {
+    historyApiFallback: true,
     hot: true,
     stats: {
         color: true,
         chunks: false
+    },
+    progress: true,
+    noInfo: true,
+    host: localhost,
+    port: port,
+    proxy: {
+        '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
     }
 }).listen(port, localhost, function(err) {
 

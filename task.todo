@@ -5,7 +5,7 @@
  ✔ dist清空 @done (16-11-23 02:19)
  ✔ 公用模块 @done (16-11-20 16:46)
  ✔ ip-自动替换 @done (16-11-17 19:26)
- ☐ 端口替换
+ ☐ 端口替换 localhost:8080
  ✔ 分离配置 @done (16-11-17 19:24)
  ☐ external
  ☐ publicPath
@@ -27,10 +27,12 @@ css
 
 loader
  ✔ loader-query @done (16-11-15 13:17)
+ ✔ es6 @done (16-11-23 14:46)
+
+ ☐ gulp img css
 
  ☐ 请求代理
 
- ☐ es6
 
  ☐ markdown-vue
 
