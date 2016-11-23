@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
+// var webpackDevMiddleware = require("webpack-dev-middleware");
+// var app = require('express')();
 
 var ip = require('ip');
 var open = require('open');
@@ -11,7 +13,7 @@ var port = 8888;
 var localhost = ip.address();
 var startPage = 'http://' + localhost + ':' + port;
 
-config.entry.unshift(
+config.entry.app.unshift(
     'webpack-dev-server/client?' + startPage + '/', //自动刷新
     'webpack/hot/dev-server' //热模块替换
 );
@@ -32,16 +34,44 @@ config.module.loaders.forEach(function(el) {
 
 config.vue.loaders.scss = 'style!css?sourceMap!sass?sourceMap';
 
+/*config.devServer = {
+    historyApiFallback: true,
+    // hot: true,
+    stats: {
+        // color: true,
+        chunks: false
+    },
+    host: localhost,
+    port: port,
+    proxy: {
+        '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
+    }
+};*/
+
 module.exports = config;
 
-new WebpackDevServer(webpack(config), {
+var compiler = webpack(config);
+
+/*app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    stats: {
+        color: true,
+        chunks: false
+    },
+    host: localhost,
+    port: port,
+    proxy: {
+        '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
+    }
+}));*/
+
+var server = new WebpackDevServer(compiler, {
     historyApiFallback: true,
     hot: true,
     stats: {
         color: true,
         chunks: false
     },
-    progress: true,
     noInfo: true,
     host: localhost,
     port: port,

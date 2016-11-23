@@ -4,17 +4,14 @@ var config = require('./webpack.config.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
-config.entry = {
-    vue: [
-        'vue',
-        'vue-router',
-        path.resolve(__dirname, './src/service/service')
-    ],
-    service: [
-        path.resolve(__dirname, './src/service/service1')
-    ],
-    app: [path.resolve(__dirname, './src/app')]
-};
+config.entry.vue = {[
+    'vue',
+    'vue-router',
+    path.resolve(__dirname, './src/service/service')
+]};
+config.entry.service = {[
+    path.resolve(__dirname, './src/service/service1')
+]};
 
 config.output.filename = '[name].[chunkhash].js';
 
@@ -44,8 +41,8 @@ config.plugins.unshift(
     }),
 
     //提取 require('xxx.css')
-    new ExtractTextPlugin('./css/layout.[contenthash].css', {allChunks: true}),
-    
+    new ExtractTextPlugin('./css/layout.[contenthash].css', { allChunks: true }),
+
     //压缩 会把autoprefixer 的browsers设为默认值，之前配置无效
     new webpack.optimize.UglifyJsPlugin({
         compress: {

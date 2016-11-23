@@ -14,9 +14,9 @@ var getpostcss = function() {
 
 module.exports = {
     //入口文件
-    entry: [
-        path.resolve(__dirname, './src/app')
-    ],
+    entry: {
+        app: [path.resolve(__dirname, './src/app')]
+    },
     output: {
         path: path.resolve(__dirname, './dist'),
         publicPath: '',
