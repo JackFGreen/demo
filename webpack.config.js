@@ -39,7 +39,7 @@ module.exports = {
     externals: {
         // 'vue': 'vue/dist/vue.min.js',
         // 'vue-router': 'vue-router/dist/vue-router.min.js'
-        // 'jquery': 'window.jquery'
+        // 'jquery': 'jquery'
     },
 
     module: {
@@ -79,9 +79,11 @@ module.exports = {
     postcss: getpostcss(),
 
     plugins: [
+        // 全局引用 不需要require
         new webpack.ProvidePlugin({
-            jQuery: "jquery",
-            $: "jquery"
+            Vue: 'vue',
+            VueRouter: 'vue-router',
+            $: 'jquery'
         }),
 
         //生成入口文件并引入js, css等文件
@@ -90,6 +92,7 @@ module.exports = {
             filename: 'index.html',
             template: path.resolve(__dirname, './index.html'),
             favicon: path.resolve(__dirname, 'src/images/favicon1.ico'),
+            chunksSortMode: 'dependency',//按依赖顺序引入
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,

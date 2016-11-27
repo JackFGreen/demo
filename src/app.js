@@ -1,14 +1,12 @@
-var Vue = require('vue');
-var VueRouter = require('vue-router');
+// var Vue = require('vue');
+// var VueRouter = require('vue-router');
 var App = Vue.use(VueRouter).extend({});
 var router = new VueRouter();
 var routes = require('./routes');
 
-var $ = require('jquery');
+// var $ = require('jquery');
 
-$('.logo').click(function(event) {
-    alert(1)
-});
+$('body').html('app.js');
 
 require('./scss/layout');
 

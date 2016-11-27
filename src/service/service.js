@@ -1,24 +1,4 @@
-var Vue = require('vue');
-
-/**
- * 验证规则
- *
- * @type object
- */
-var validator = {
-
-
-
-    bankcard: function(i) {
-
-        var reg = new RegExp('^\\d{14,19}$');
-
-        return reg.test(i);
-    }
-
-
-};
-
+// var Vue = require('vue');
 
 /**
  * 验证数据

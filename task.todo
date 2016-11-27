@@ -3,11 +3,12 @@
  ✔ chunkhash 只针对修改的文件 @done (16-11-18 02:58)
  ✔ chunks分离 vendor-runtime @done (16-11-20 16:46)
  ✔ dist清空 @done (16-11-23 02:19)
- ✔ 公用模块 @done (16-11-20 16:46)
+ ✔ 公用模块 打包到引用的文件？ 顺序很重要  chunkhash @done (16-11-28 02:21)
+ ✔ HtmlWebpackPlugin 按依赖顺序引入chunksSortMode: 'dependency' @done (16-11-28 01:51)
  ✔ ip-自动替换 @done (16-11-17 19:26)
  ☐ 端口替换 localhost:8080
  ✔ 分离配置 @done (16-11-17 19:24)
- ☐ external
+ ✔ external 引入外部文件不打包 externals对象的key是给require时用的，比如require('react')，对象的value表示的是如何在global（即window）中访问到该对象 @done (16-11-28 01:33)
  ☐ publicPath
 
 图片

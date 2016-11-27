@@ -16,9 +16,8 @@ require('../service/service');
 // var $ = require('jquery');
 
 console.log($)
-$('.logo').click(function(event) {
-    alert(1)
-});
+// $('.logo').html('logo');
+$('body').append('<p>jQuery</p>');
 
     module.exports = {
 

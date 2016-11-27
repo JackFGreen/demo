@@ -4,14 +4,15 @@ var config = require('./webpack.config.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
-config.entry.vue = {[
+config.entry.lib = [
     'vue',
     'vue-router',
-    path.resolve(__dirname, './src/service/service')
-]};
-config.entry.service = {[
+    'jquery'
+];
+config.entry.service = [
+    path.resolve(__dirname, './src/service/service'),
     path.resolve(__dirname, './src/service/service1')
-]};
+];
 
 config.output.filename = '[name].[chunkhash].js';
 
@@ -35,9 +36,11 @@ config.plugins.unshift(
         "exclude": []
     }),
 
-    //通用模块单独打包 vendor为runtime文件，每次都会改变
+    //通用模块单独打包 vendor为runtime文件，每次打包都会改变
+    //打包顺序从右到左
     new webpack.optimize.CommonsChunkPlugin({
-        names: ['vue', 'service', 'vendor']
+        names: ['service', 'lib', 'vendor'],
+        filename: '[name].[chunkhash].js'//不会加hash
     }),
 
     //提取 require('xxx.css')
