@@ -9,8 +9,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config webpack.dev.js --port 8888 --progress --hot --inline",
-    "build": "webpack --config webpack.build.js"
+    "start": "webpack-dev-server --config build/webpack.dev.js --port 8888 --progress --no-info --inline",
+    "build": "webpack --config build/webpack.build.js --progress"
   },
   "author": "demo",
   "license": "MIT",

@@ -6,7 +6,7 @@ var routes = require('./routes');
 
 // var $ = require('jquery');
 
-$('body').html('app.js');
+// $('body').html('app.js');
 
 require('./scss/layout');
 

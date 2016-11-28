@@ -15,11 +15,11 @@ var getpostcss = function() {
 module.exports = {
     //入口文件
     entry: {
-        app: [path.resolve(__dirname, './src/app')]
+        app: [path.resolve(__dirname, '../src/app')]
     },
     output: {
-        path: path.resolve(__dirname, './dist'),
-        publicPath: '',
+        path: path.resolve(__dirname, '../dist'),
+        publicPath: './',
         filename: '[name].[hash].js',
         chunkFilename: '[name].[chunkhash].js'
     },
@@ -90,9 +90,9 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'demo',
             filename: 'index.html',
-            template: path.resolve(__dirname, './index.html'),
-            favicon: path.resolve(__dirname, 'src/images/favicon1.ico'),
-            chunksSortMode: 'dependency',//按依赖顺序引入
+            template: path.resolve(__dirname, '../src/index.html'),
+            favicon: path.resolve(__dirname, '../src/images/favicon1.ico'),
+            chunksSortMode: 'dependency', //按依赖顺序引入
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,

@@ -9,7 +9,7 @@
  ☐ 端口替换 localhost:8080
  ✔ 分离配置 @done (16-11-17 19:24)
  ✔ external 引入外部文件不打包 externals对象的key是给require时用的，比如require('react')，对象的value表示的是如何在global（即window）中访问到该对象 @done (16-11-28 01:33)
- ☐ publicPath
+ ✔ publicPath 配置打包后引用路径 @done (16-11-29 00:33)
 
 图片
  ✔ img-hash @done (16-11-03 10:37)

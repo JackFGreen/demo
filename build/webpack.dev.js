@@ -72,9 +72,9 @@ var server = new WebpackDevServer(compiler, {
         color: true,
         chunks: false
     },
-    noInfo: true,
-    host: localhost,
-    port: port,
+    // noInfo: true,
+    // host: localhost,
+    // port: port,
     proxy: {
         '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
     }
