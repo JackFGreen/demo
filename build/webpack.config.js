@@ -5,9 +5,7 @@ var autoprefixer = require('autoprefixer');
 
 var getpostcss = function() {
     var postcss = [
-        autoprefixer({
-            browsers: ["Android 4.1", "iOS 7.1", "Chrome > 31", "ff > 31", "ie >= 10"]
-        })
+        autoprefixer()
     ];
     return postcss;
 };
@@ -90,7 +88,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'demo',
             filename: 'index.html',
-            template: path.resolve(__dirname, '../src/index.html'),
+            template: path.resolve(__dirname, '../index.html'),
             favicon: path.resolve(__dirname, '../src/images/favicon1.ico'),
             chunksSortMode: 'dependency', //按依赖顺序引入
             minify: {
