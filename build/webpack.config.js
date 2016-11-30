@@ -50,10 +50,10 @@ module.exports = {
             exclude: /node_modules/
         }, {
             test: /\.css$/,
-            loader: 'style!css'
+            loader: 'style!css?-autoprefixer!postcss'
         }, {
             test: /\.scss$/,
-            loader: 'style!css!sass!postcss'
+            loader: 'style!css?-autoprefixer!postcss!sass'
         }, {
             test: /\.(png|gif|jpe?g)$/,
             loader: 'url',
@@ -69,7 +69,7 @@ module.exports = {
     //vue加配置
     vue: {
         loaders: {
-            scss: 'style!css!sass'
+            scss: 'style!css?-autoprefixer!sass'
         },
         postcss: getpostcss()
     },

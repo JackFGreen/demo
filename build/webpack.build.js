@@ -17,11 +17,11 @@ config.entry.service = [
 config.output.filename = '[name].[chunkhash].js';
 
 config.module.loaders.forEach(function(el) {
-    // if (el.test.toString() === /\.css$/.toString()) {
-    //     el.loader = ExtractTextPlugin.extract('style', 'css');
-    // }
+    if (el.test.toString() === /\.css$/.toString()) {
+        el.loader = ExtractTextPlugin.extract('style', 'css?-autoprefixer!postcss');
+    }
     if (el.test.toString() === /\.scss$/.toString()) {
-        el.loader = ExtractTextPlugin.extract('style', 'css!sass!postcss');
+        el.loader = ExtractTextPlugin.extract('style', 'css?-autoprefixer!postcss!sass');
     }
 });
 
@@ -40,11 +40,11 @@ config.plugins.unshift(
     //打包顺序从右到左
     new webpack.optimize.CommonsChunkPlugin({
         names: ['service', 'lib', 'vendor'],
-        filename: '[name].[chunkhash].js'//不会加hash
+        filename: '[name].[chunkhash].js'//默认加hash
     }),
 
     //提取 require('xxx.css')
-    new ExtractTextPlugin('css/layout.[contenthash].css', { allChunks: true }),
+    new ExtractTextPlugin('css/layout.[contenthash].css'),
 
     //压缩 会把autoprefixer 的browsers设为默认值，之前配置无效
     new webpack.optimize.UglifyJsPlugin({

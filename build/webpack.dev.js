@@ -28,7 +28,7 @@ config.devtool = 'eval-source-map';
 
 config.module.loaders.forEach(function(el) {
     if (el.test.toString() === /\.scss$/.toString()) {
-        el.loader = 'style!css?sourceMap!sass?sourceMap!postcss';
+        el.loader = 'style!css?sourceMap!postcss!sass?sourceMap';
     }
 });
 
