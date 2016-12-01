@@ -14,7 +14,7 @@ module.exports = {
     },
 
     '/demo1': {
-        name: 'Demo-1',
+        name: 'Demo1',
         component: function(resolve) {
             require.ensure([], function () {
                 resolve(require('./components/demo1'));
@@ -23,11 +23,20 @@ module.exports = {
     },
 
     '/demo2': {
-        name: 'Demo-2',
+        name: 'Demo2',
         component: function(resolve) {
             require.ensure([], function () {
                 resolve(require('./components/demo2'));
             }, './components/demo2');
+        }
+    },
+
+    '/demo3': {
+        name: 'Demo3',
+        component: function(resolve) {
+            require.ensure([], function () {
+                resolve(require('./components/demo3'));
+            }, './components/demo3');
         }
     },
 

@@ -56,14 +56,36 @@ module.exports = {
             loader: 'style!css?-autoprefixer!postcss!sass'
         }, {
             test: /\.(png|gif|jpe?g)$/,
-            loader: 'url',
+            /*loader: 'url',
             query: {
                 // mimetype: 'image/png',
                 limit: '8192',
                 name: 'images/[name].[hash].[ext]'
-            }
+            }*/
+            loaders: [
+                // 'url?limit=8192&name=images/[name].[hash].[ext]',
+                'file?name=./images/[name].[hash].[ext]',
+                'image-webpack'
+            ]
         }]
 
+    },
+
+    imageWebpackLoader: {
+        mozjpeg: {
+            quality: 65
+        },
+        pngquant: {
+            quality: "65-90",
+            speed: 4
+        },
+        svgo: {
+            plugins: [{
+                removeViewBox: false
+            }, {
+                removeEmptyAttrs: false
+            }]
+        }
     },
 
     //vue加配置
