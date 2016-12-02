@@ -46,7 +46,7 @@ config.plugins.unshift(
     //提取 require('xxx.css')
     new ExtractTextPlugin('css/layout.[contenthash].css'),
 
-    //压缩 会把autoprefixer 的browsers设为默认值，之前配置无效
+    //压缩 会把autoprefixer 的browsers设为默认值，之前配置无效  css?-autoprefixer
     new webpack.optimize.UglifyJsPlugin({
         compress: {
             warnings: false
