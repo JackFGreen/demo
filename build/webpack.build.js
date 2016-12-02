@@ -15,6 +15,7 @@ config.entry.service = [
 ];
 
 config.output.filename = '[name].[chunkhash].js';
+config.output.publicPath = path.resolve(__dirname, '../dist/');
 
 config.module.loaders.forEach(function(el) {
     if (el.test.toString() === /\.css$/.toString()) {
