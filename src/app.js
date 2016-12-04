@@ -8,6 +8,7 @@ var routes = require('./routes');
 
 // $('body').html('app.js');
 
+require('./scss/_global.scss');
 require('./scss/layout');
 
 router.map(routes).redirect({'*': '/index'}).afterEach(function(arg) {

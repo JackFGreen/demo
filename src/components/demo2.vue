@@ -12,6 +12,7 @@
 
 <script>
 require('../service/service');
+require('../scss/_global.scss');
 
 // var $ = require('jquery');
 

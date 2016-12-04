@@ -14,8 +14,7 @@ config.entry.service = [
     path.resolve(__dirname, '../src/service/service1')
 ];
 
-config.output.filename = '[name].[chunkhash].js';
-config.output.publicPath = path.resolve(__dirname, '../dist/');
+config.output.filename = '[name].[chunkhash:7].js';
 
 config.module.loaders.forEach(function(el) {
     if (el.test.toString() === /\.css$/.toString()) {
@@ -41,11 +40,11 @@ config.plugins.unshift(
     //打包顺序从右到左
     new webpack.optimize.CommonsChunkPlugin({
         names: ['service', 'lib', 'vendor'],
-        filename: '[name].[chunkhash].js'//默认加hash
+        filename: '[name].[chunkhash:7].js'//默认加hash
     }),
 
     //提取 require('xxx.css')
-    new ExtractTextPlugin('css/layout.[contenthash].css'),
+    new ExtractTextPlugin('css/layout.[contenthash:7].css'),
 
     //压缩 会把autoprefixer 的browsers设为默认值，之前配置无效  css?-autoprefixer
     new webpack.optimize.UglifyJsPlugin({

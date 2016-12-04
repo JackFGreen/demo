@@ -50,6 +50,7 @@ import common from './common.vue';
 </script>
 
 <style scoped lang="scss">
+@import '../scss/_global.scss';
         div {
             color: red;
             display: flex;

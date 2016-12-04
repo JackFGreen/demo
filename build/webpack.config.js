@@ -18,8 +18,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: './',
-        filename: '[name].[hash].js',
-        chunkFilename: '[name].[chunkhash].js'
+        filename: '[name].[hash:7].js',
+        chunkFilename: '[name].[chunkhash:7].js'
     },
 
     resolve: {
@@ -56,22 +56,22 @@ module.exports = {
             loader: 'style!css?-autoprefixer!postcss!sass'
         }, {
             test: /\.(png|gif|jpe?g)$/,
-            /*loader: 'url',
+            loader: 'url',
             query: {
                 // mimetype: 'image/png',
                 limit: '8192',
-                name: 'images/[name].[hash].[ext]'
-            }*/
-            loaders: [
-                // 'url?limit=8192&name=images/[name].[hash].[ext]',
-                'file?name=./images/[name].[hash].[ext]',
+                name: 'images/[name].[hash:7].[ext]'
+            }
+            /*loaders: [
+                // 'url?limit=8192&name=images/[name].[hash:7].[ext]',
+                'file?name=./images/[name].[hash:7].[ext]',
                 'image-webpack'
-            ]
+            ]*/
         }]
 
     },
 
-    imageWebpackLoader: {
+    /*imageWebpackLoader: {
         mozjpeg: {
             quality: 65
         },
@@ -86,7 +86,7 @@ module.exports = {
                 removeEmptyAttrs: false
             }]
         }
-    },
+    },*/
 
     //vue加配置
     vue: {
@@ -111,7 +111,7 @@ module.exports = {
             title: 'demo',
             filename: 'index.html',
             template: path.resolve(__dirname, '../index.html'),
-            favicon: path.resolve(__dirname, '../src/images/favicon1.ico'),
+            favicon: path.resolve(__dirname, '../src/images/favicon.ico'),
             chunksSortMode: 'dependency', //按依赖顺序引入
             minify: {
                 removeComments: true,

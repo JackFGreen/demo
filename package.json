@@ -9,8 +9,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config build/webpack.dev.js --port 8888 --progress --no-info --inline",
-    "build": "webpack --config build/webpack.build.js --progress"
+    "start": "webpack-dev-server --config build/webpack.dev.js --port 8888 --inline --no-info --progress --colors",
+    "build": "webpack --config build/webpack.build.js --no-info --progress --colors"
   },
   "author": "demo",
   "license": "MIT",
@@ -35,6 +35,7 @@
     "gulp-cache": "^0.4.5",
     "gulp-imagemin": "^3.1.1",
     "gulp-load-plugins": "^1.4.0",
+    "gulp-shell": "^0.5.2",
     "html-webpack-plugin": "^2.24.1",
     "imagemin-gifsicle": "^5.1.0",
     "imagemin-mozjpeg": "^6.0.0",
