@@ -15,7 +15,7 @@ const dev_root = './src/';
 gulp.task('compress-image', () => {
     return gulp.src(dev_root + 'images/**/*.*')
 
-    .pipe($.cache($.imagemin([
+        .pipe($.cache($.imagemin([
             mozjpeg({
                 progressive: true,
                 quality: 65

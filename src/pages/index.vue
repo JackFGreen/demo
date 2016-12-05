@@ -4,6 +4,8 @@
 
     <a v-for="obj in routes" href="#!{{obj.fullPath}}">{{obj.name}}</a>
 
+    <img src="../images/t3.jpg">
+
 </template>
 
 <script type="text/javascript">
