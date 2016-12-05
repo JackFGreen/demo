@@ -13,6 +13,8 @@ var port = 8888;
 var localhost = ip.address();
 var startPage = 'http://' + localhost + ':' + port;
 
+config.output.publicPath = startPage + '/';
+
 config.entry.app.unshift(
     'webpack-dev-server/client?' + startPage + '/', //自动刷新
     'webpack/hot/dev-server' //热模块替换
@@ -28,11 +30,11 @@ config.devtool = 'eval-source-map';
 
 config.module.loaders.forEach(function(el) {
     if (el.test.toString() === /\.scss$/.toString()) {
-        el.loader = 'style!css?sourceMap&-autoprefixer!postcss!sass?sourceMap';
+        el.loader = 'style!css?sourceMap!postcss!sass?sourceMap';
     }
 });
 
-config.vue.loaders.scss = 'style!css?sourceMap&-autoprefixer!sass?sourceMap';
+config.vue.loaders.scss = 'style!css?sourceMap!sass?sourceMap';
 
 /*config.devServer = {
     historyApiFallback: true,
@@ -66,25 +68,21 @@ var compiler = webpack(config);
 }));*/
 
 var server = new WebpackDevServer(compiler, {
+    // noInfo: true,
+    // host: localhost,
+    // port: port,
+    // proxy: {
+    //     '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
+    // },
     historyApiFallback: true,
     hot: true,
     stats: {
         color: true,
         chunks: false
-    },
-    // noInfo: true,
-    // host: localhost,
-    // port: port,
-    proxy: {
-        '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
     }
 }).listen(port, localhost, function(err) {
 
-    if (err) {
-        console.log(err);
-        return;
-    }
-    console.log('Listening at ' + startPage);
+    console.log('\n Listening at ' + startPage);
 
     qrcode.generate(startPage, { small: true });
 

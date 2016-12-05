@@ -50,43 +50,35 @@ module.exports = {
             exclude: /node_modules/
         }, {
             test: /\.css$/,
-            loader: 'style!css?-autoprefixer!postcss'
+            loader: 'style!css!postcss'
         }, {
             test: /\.scss$/,
-            loader: 'style!css?-autoprefixer!postcss!sass'
+            loader: 'style!css!postcss!sass'
         }, {
             test: /\.(png|gif|jpe?g)$/,
-            loader: 'url',
-            query: {
-                // mimetype: 'image/png',
-                limit: '8192',
-                name: 'images/[name].[hash:7].[ext]'
-            }
-            /*loaders: [
-                // 'url?limit=8192&name=images/[name].[hash:7].[ext]',
-                'file?name=./images/[name].[hash:7].[ext]',
+            loaders: [
+                'url?limit=8192&name=images/[name].[hash:7].[ext]',
                 'image-webpack'
-            ]*/
+            ]
         }]
 
     },
 
-    /*imageWebpackLoader: {
+    imageWebpackLoader: {
         mozjpeg: {
+            progressive: true,
             quality: 65
         },
         pngquant: {
             quality: "65-90",
             speed: 4
         },
-        svgo: {
-            plugins: [{
-                removeViewBox: false
-            }, {
-                removeEmptyAttrs: false
-            }]
+        gifsicle: {
+            interlaced: true,
+            colors: 64,
+            optimizationLevel: 3
         }
-    },*/
+    },
 
     //vue加配置
     vue: {
