@@ -13,6 +13,8 @@ var port = 8888;
 var localhost = ip.address();
 var startPage = 'http://' + localhost + ':' + port;
 
+//开启 souceMap url() 图片相对路径会指向 （chrome:blob or chrome:devtools），需要设置 publicPath
+//https://github.com/webpack/style-loader/blob/master/README.md
 config.output.publicPath = startPage + '/';
 
 config.entry.app.unshift(

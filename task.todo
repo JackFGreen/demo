@@ -21,7 +21,7 @@
 
 css
  ✔ css作用域-scoped @done (16-11-04 18:50)
- ☐ css-prefixer  UglifyJsPlugin会把browsers设成默认值
+ ✔ css-prefixer  UglifyJsPlugin会把browsers设成默认值 @done (16-12-05 23:57)
  ✔ css-打包后独立  用require  import同一个 css 会重复 @done (16-11-17 19:25)
  ✔ scss sourceMap  lang="scss" @done (16-11-17 00:39)
 
