@@ -1,10 +1,10 @@
 <template>
-    
+
 <div class="demo1">
     <h2><p><em>啦啦啦啦啦啦啦啦</em></p></h2>
-    
+
     <h2><p><em>啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</em></p></h2>
-    
+
     <h2><p><em>啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦</em></p></h2>
 </div>
 
@@ -31,11 +31,11 @@
 </template>
 
 <script>
-    
+
 </script>
 
 <style scoped lang="scss">
-    
+
     * {
         margin: 0;
         padding: 0;
@@ -77,7 +77,7 @@
         height: 30px;
         line-height: 30px;
         overflow: hidden;
-        
+
         &:after {
             content: '';
             width: 100%;

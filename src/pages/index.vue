@@ -23,6 +23,20 @@ module.exports = {
 
     data: function() {
 
+        ajax.get('/v2/apply/derating-info')
+            .then(function(xhr, res) {
+                if (res.code == 0) {
+
+
+                } else {
+                    typing.warning(res.message);
+                }
+            })
+            .catch(function(err, xhr) {
+
+                typing.warning('网络错误');
+            });
+
         return $data;
     }
 }

@@ -40,7 +40,7 @@ config.plugins.unshift(
     //打包顺序从右到左
     new webpack.optimize.CommonsChunkPlugin({
         names: ['service', 'lib', 'vendor'],
-        filename: '[name].[chunkhash:7].js'//默认加hash
+        filename: '[name].[chunkhash:7].js' //默认加hash
     }),
 
     //提取 require('xxx.css')
@@ -55,3 +55,13 @@ config.plugins.unshift(
 );
 
 module.exports = config;
+
+webpack(config, function(err, stats) {
+
+    if (err) throw err;
+
+    process.stdout.write(stats.toString({
+        chunks: false,
+        colors: true
+    }));
+});

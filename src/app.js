@@ -1,5 +1,3 @@
-// var Vue = require('vue');
-// var VueRouter = require('vue-router');
 var App = Vue.use(VueRouter).extend({});
 var router = new VueRouter();
 var routes = require('./routes');
@@ -10,6 +8,10 @@ var routes = require('./routes');
 
 require('./scss/_global.scss');
 require('./scss/layout');
+
+import ajax from './service/ajax.js';
+
+window.ajax = ajax;
 
 router.map(routes).redirect({'*': '/index'}).afterEach(function(arg) {
     document.title = arg.to.name;

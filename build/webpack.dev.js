@@ -1,7 +1,5 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
-// var webpackDevMiddleware = require("webpack-dev-middleware");
-// var app = require('express')();
 
 var ip = require('ip');
 var open = require('open');
@@ -11,15 +9,16 @@ var config = require('./webpack.config.js');
 
 var port = 8888;
 var localhost = ip.address();
-var startPage = 'http://' + localhost + ':' + port;
+
+var startPage = 'http://' + localhost + ':' + port + '/';
 
 //开启 souceMap url() 图片相对路径会指向 （chrome:blob or chrome:devtools），需要设置 publicPath
 //https://github.com/webpack/style-loader/blob/master/README.md
-config.output.publicPath = startPage + '/';
+config.output.publicPath = startPage;
 
 config.entry.app.unshift(
-    'webpack-dev-server/client?' + startPage + '/', //自动刷新
-    'webpack/hot/dev-server' //热模块替换
+    'webpack-dev-server/client?' + startPage, //热加载
+    'webpack/hot/dev-server' //热替换
 );
 config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
@@ -38,51 +37,28 @@ config.module.loaders.forEach(function(el) {
 
 config.vue.loaders.scss = 'style!css?sourceMap!sass?sourceMap';
 
-/*config.devServer = {
-    historyApiFallback: true,
-    // hot: true,
-    stats: {
-        // color: true,
-        chunks: false
-    },
-    host: localhost,
-    port: port,
-    proxy: {
-        '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
-    }
-};*/
-
 module.exports = config;
 
-var compiler = webpack(config);
+// var dev_proxy = '';
 
-/*app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    stats: {
-        color: true,
-        chunks: false
-    },
-    host: localhost,
-    port: port,
-    proxy: {
-        '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
-    }
-}));*/
-
-var server = new WebpackDevServer(compiler, {
-    // noInfo: true,
-    // host: localhost,
-    // port: port,
+new WebpackDevServer(webpack(config), {
     // proxy: {
-    //     '*': startPage // 用于转发api数据，但webpack自己提供的并不太好用
+    //     '**': {
+    //         ignorePath: true,
+    //         changeOrigin: true,
+    //         secure: false,
+    //         target: dev_proxy
+    //     }
     // },
     historyApiFallback: true,
     hot: true,
     stats: {
-        color: true,
-        chunks: false
+        chunks: false,
+        colors: true
     }
-}).listen(port, localhost, function(err) {
+}).listen(port, function(err, stats) {
+
+    if (err) throw err;
 
     console.log('\n Listening at ' + startPage);
 
@@ -92,4 +68,5 @@ var server = new WebpackDevServer(compiler, {
 
         open(startPage, 'chrome');
     }
+
 });
