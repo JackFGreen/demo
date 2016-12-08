@@ -49,17 +49,27 @@ module.exports = {
             loader: 'babel',
             exclude: /node_modules/
         }, {
+            test: /\.html$/,
+            loader: 'vue-html'
+        }, {
             test: /\.css$/,
             loader: 'style!css!postcss'
         }, {
             test: /\.scss$/,
             loader: 'style!css!postcss!sass'
         }, {
-            test: /\.(png|gif|jpe?g)$/,
+            test: /\.(png|gif|jpe?g|svg)$/,
             loaders: [
                 'url?limit=8192&name=images/[name].[hash:7].[ext]',
                 'image-webpack'
             ]
+        }, {
+            test: /\.(woff2?|eot|ttf|otf)$/,
+            loader: 'url',
+            query: {
+                limit: 8192,
+                name: 'fonts/[name].[hash:7].[ext]'
+            }
         }]
 
     },
