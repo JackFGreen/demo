@@ -40,6 +40,15 @@ module.exports = {
         }
     },
 
+    '/demo4': {
+        name: 'grid',
+        component: function(resolve) {
+            require.ensure([], function () {
+                resolve(require('./components/demo4'));
+            }, './components/demo4');
+        }
+    },
+
     '/common': {
         name: 'common',
         component: function(resolve) {
