@@ -6,6 +6,7 @@ var routes = require('./routes');
 
 // $('body').html('app.js');
 
+require('./scss/ionicons/ionicons.scss');
 require('./scss/_global.scss');
 require('./scss/layout');
 

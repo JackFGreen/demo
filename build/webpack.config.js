@@ -2,14 +2,26 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
-
+var postcssFontMagician = require('postcss-font-magician');
 var getpostcss = function() {
     var postcss = [
+        // postcssFontMagician({
+        //     // foundries: 'bootstrap google'
+        //     aliases: {
+        //         'iconfont': 'ionicons'
+        //     },
+        //     // variants: {
+        //     //     'iconfont': {
+        //     //     //     '300': ["woff eot", "U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF"],
+        //     //     //     '400 italic': ["eot"]
+        //     //     }
+        //     // },
+        //     hosted: path.resolve(__dirname, '../src/fonts/ionicons/')
+        // }),
         autoprefixer()
     ];
     return postcss;
 };
-
 module.exports = {
     //入口文件
     entry: {
@@ -21,7 +33,6 @@ module.exports = {
         filename: '[name].[hash:7].js',
         chunkFilename: '[name].[chunkhash:7].js'
     },
-
     resolve: {
         // require时省略的扩展名，如：require('module') 不需要module.js
         extensions: ['', '.js', '.vue', '.scss'],
@@ -32,14 +43,12 @@ module.exports = {
             'jquery': 'jquery/dist/jquery.min'
         }
     },
-
     //引用的外部文件不打包
     externals: {
         // 'vue': 'vue/dist/vue.min.js',
         // 'vue-router': 'vue-router/dist/vue-router.min.js'
         // 'jquery': 'jquery'
     },
-
     module: {
         loaders: [{
             test: /\.vue$/,
@@ -58,22 +67,20 @@ module.exports = {
             test: /\.scss$/,
             loader: 'style!css!postcss!sass'
         }, {
-            test: /\.(png|gif|jpe?g|svg)$/,
+            test: /\.(png|gif|jpe?g)(\?.*)?$/,
             loaders: [
                 'url?limit=8192&name=images/[name].[hash:7].[ext]',
                 'image-webpack'
             ]
         }, {
-            test: /\.(woff2?|eot|ttf|otf)$/,
+            test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
             loader: 'url',
             query: {
                 limit: 8192,
                 name: 'fonts/[name].[hash:7].[ext]'
             }
         }]
-
     },
-
     imageWebpackLoader: {
         mozjpeg: {
             progressive: true,
@@ -89,7 +96,6 @@ module.exports = {
             optimizationLevel: 3
         }
     },
-
     //vue加配置
     vue: {
         loaders: {
@@ -97,9 +103,7 @@ module.exports = {
         },
         postcss: getpostcss()
     },
-
     postcss: getpostcss(),
-
     plugins: [
         // 全局引用 不需要require
         new webpack.ProvidePlugin({
@@ -107,7 +111,6 @@ module.exports = {
             VueRouter: 'vue-router',
             $: 'jquery'
         }),
-
         //生成入口文件并引入js, css等文件
         new HtmlWebpackPlugin({
             title: 'demo',

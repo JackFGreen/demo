@@ -36,6 +36,7 @@
     "ip": "^1.1.4",
     "node-sass": "^3.10.1",
     "open": "0.0.5",
+    "postcss-font-magician": "^1.5.0",
     "postcss-loader": "^1.1.1",
     "qrcode-terminal": "^0.11.0",
     "sass-loader": "^4.0.2",
