@@ -39,17 +39,7 @@ config.vue.loaders.scss = 'style!css?sourceMap!sass?sourceMap';
 
 module.exports = config;
 
-// var dev_proxy = '';
-
 new WebpackDevServer(webpack(config), {
-    // proxy: {
-    //     '**': {
-    //         ignorePath: true,
-    //         changeOrigin: true,
-    //         secure: false,
-    //         target: dev_proxy
-    //     }
-    // },
     historyApiFallback: true,
     hot: true,
     stats: {

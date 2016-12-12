@@ -15,12 +15,14 @@ module.exports = {
     entry: {
         app: [path.resolve(__dirname, '../src/app')]
     },
+
     output: {
         path: path.resolve(__dirname, '../dist'),
         publicPath: '',
         filename: '[name].[hash:7].js',
         chunkFilename: '[name].[chunkhash:7].js'
     },
+
     resolve: {
         // require时省略的扩展名，如：require('module') 不需要module.js
         extensions: ['', '.js', '.vue', '.scss'],
@@ -31,12 +33,14 @@ module.exports = {
             'jquery': 'jquery/dist/jquery.min'
         }
     },
+
     //引用的外部文件不打包
     externals: {
         // 'vue': 'vue/dist/vue.min.js',
         // 'vue-router': 'vue-router/dist/vue-router.min.js'
         // 'jquery': 'jquery'
     },
+
     module: {
         loaders: [{
             test: /\.vue$/,
@@ -57,7 +61,7 @@ module.exports = {
         }, {
             test: /\.(png|gif|jpe?g)(\?.*)?$/,
             loaders: [
-                'url?limit=2192&name=images/[name].[hash:7].[ext]',
+                'url?limit=8192&name=images/[name].[hash:7].[ext]',
                 'image-webpack'
             ]
         }, {
@@ -69,6 +73,7 @@ module.exports = {
             }
         }]
     },
+
     imageWebpackLoader: {
         mozjpeg: {
             progressive: true,
@@ -84,6 +89,7 @@ module.exports = {
             optimizationLevel: 3
         }
     },
+
     //vue加配置
     vue: {
         loaders: {
@@ -91,7 +97,9 @@ module.exports = {
         },
         postcss: getpostcss()
     },
+
     postcss: getpostcss(),
+
     plugins: [
         // 全局引用 不需要require
         new webpack.ProvidePlugin({
@@ -99,6 +107,7 @@ module.exports = {
             VueRouter: 'vue-router',
             $: 'jquery'
         }),
+
         //生成入口文件并引入js, css等文件
         new HtmlWebpackPlugin({
             title: 'demo',
