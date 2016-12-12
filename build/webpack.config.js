@@ -2,26 +2,14 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var autoprefixer = require('autoprefixer');
-var postcssFontMagician = require('postcss-font-magician');
+
 var getpostcss = function() {
     var postcss = [
-        // postcssFontMagician({
-        //     // foundries: 'bootstrap google'
-        //     aliases: {
-        //         'iconfont': 'ionicons'
-        //     },
-        //     // variants: {
-        //     //     'iconfont': {
-        //     //     //     '300': ["woff eot", "U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF"],
-        //     //     //     '400 italic': ["eot"]
-        //     //     }
-        //     // },
-        //     hosted: path.resolve(__dirname, '../src/fonts/ionicons/')
-        // }),
         autoprefixer()
     ];
     return postcss;
 };
+
 module.exports = {
     //入口文件
     entry: {
@@ -69,7 +57,7 @@ module.exports = {
         }, {
             test: /\.(png|gif|jpe?g)(\?.*)?$/,
             loaders: [
-                'url?limit=8192&name=images/[name].[hash:7].[ext]',
+                'url?limit=2192&name=images/[name].[hash:7].[ext]',
                 'image-webpack'
             ]
         }, {

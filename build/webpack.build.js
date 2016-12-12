@@ -16,6 +16,8 @@ config.entry.service = [
 
 config.output.filename = '[name].[chunkhash:7].js';
 
+// config.output.publicPath = '//cdn.com/demo/';
+
 config.module.loaders.forEach(function(el) {
     if (el.test.toString() === /\.css$/.toString()) {
         el.loader = ExtractTextPlugin.extract('style', 'css?-autoprefixer!postcss');
@@ -44,7 +46,11 @@ config.plugins.unshift(
     }),
 
     //提取 require('xxx.css')
-    new ExtractTextPlugin('css/layout.[contenthash:7].css'),
+    //before bg: url(../images/bg.jpg)
+    //after    bg: url(images/bg.jpg) => dist/css/images/bg.jpg
+    //https://github.com/webpack/extract-text-webpack-plugin/issues/27
+    // new ExtractTextPlugin('css/layout.[contenthash:7].css'),
+    new ExtractTextPlugin('layout.[contenthash:7].css'),
 
     //压缩 会把autoprefixer 的browsers设为默认值，之前配置无效  css?-autoprefixer
     new webpack.optimize.UglifyJsPlugin({

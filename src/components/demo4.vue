@@ -14,8 +14,10 @@
         </div>
     </div>
 
-    <i class="post-font"></i>
+    <i class="iconfont"></i>
     <i class="ion-xbox"></i>
+
+    <div class="test-bg"></div>
 
 </template>
 
@@ -82,31 +84,37 @@ $gridGutter: 8px;
 }
 
 
-//iconfont
+// iconfont
 $iconfont-path: '../fonts/ionicons/';
-$iconfont: 'v0.0.1';
+$iconfont-family: 'iconfont';
+$iconfont-version: 'v0.0.1';
 
 @font-face {
- font-family: 'iconfont';
- src:url("#{$iconfont-path}/ionicons.eot?v=#{$iconfont}");
- src:url("#{$iconfont-path}/ionicons.eot?v=#{$iconfont}#iefix") format("embedded-opentype"),
-  url("#{$iconfont-path}/ionicons.ttf?v=#{$iconfont}") format("truetype"),
-  url("#{$iconfont-path}/ionicons.woff?v=#{$iconfont}") format("woff"),
-  url("#{$iconfont-path}/ionicons.svg?v=#{$iconfont}#Ionicons") format("svg");
- font-weight: normal;
- font-style: normal;
+ font-family: $iconfont-family;
+ src:url("#{$iconfont-path}/ionicons.eot?v=#{$iconfont-version}");
+ src:url("#{$iconfont-path}/ionicons.eot?v=#{$iconfont-version}#iefix") format("embedded-opentype"),
+  url("#{$iconfont-path}/ionicons.ttf?v=#{$iconfont-version}") format("truetype"),
+  url("#{$iconfont-path}/ionicons.woff?v=#{$iconfont-version}") format("woff"),
+  url("#{$iconfont-path}/ionicons.svg?v=#{$iconfont-version}#Ionicons") format("svg");
 }
 
 
-.post-font {
-    font-family: 'iconfont';
+.iconfont {
+    font-family: $iconfont-family;
+    font-weight: 400;
+    font-style: normal;
+    display: inline-block;
 
     &:before {
-        // font-family: 'Alice';
         content: '\f25c';
     }
 }
 
+.test-bg {
+    width: 200px;
+    height: 200px;
+    background: url(../images/t4.jpg);
+}
 
 
 </style>
