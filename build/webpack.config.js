@@ -27,18 +27,19 @@ module.exports = {
         // require时省略的扩展名，如：require('module') 不需要module.js
         extensions: ['', '.js', '.vue', '.scss'],
         // 别名，可以直接使用别名来代表设定的路径以及其他
+        // 默认require 的不是 .min文件
         alias: {
+            // 'jquery': 'jquery/dist/jquery.min',
             'vue': 'vue/dist/vue.min.js',
-            'vue-router': 'vue-router/dist/vue-router.min.js',
-            'jquery': 'jquery/dist/jquery.min'
+            'vue-router': 'vue-router/dist/vue-router.min.js'
         }
     },
 
     //引用的外部文件不打包
     externals: {
+        // 'jquery': 'jquery',
         // 'vue': 'vue/dist/vue.min.js',
         // 'vue-router': 'vue-router/dist/vue-router.min.js'
-        // 'jquery': 'jquery'
     },
 
     module: {
@@ -103,9 +104,9 @@ module.exports = {
     plugins: [
         // 全局引用 不需要require
         new webpack.ProvidePlugin({
+            // $: 'jquery',
             Vue: 'vue',
-            VueRouter: 'vue-router',
-            $: 'jquery'
+            VueRouter: 'vue-router'
         }),
 
         //生成入口文件并引入js, css等文件
