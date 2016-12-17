@@ -1,6 +1,6 @@
 <template>
 
-    <p>home</p>
+    <p>路由列表</p>
 
     <a v-for="obj in routes" href="#!{{obj.fullPath}}">{{obj.name}}</a>
 
@@ -10,12 +10,26 @@
 var routes = require('../routes');
 
 var $data = {
-    routes: routes
+    routes: {}
 };
 
 module.exports = {
 
     data: function() {
+        var i = 0, j, k;
+        var arr = ['/index'];//过滤不显示的路由
+
+        for (j in routes) {
+            $data.routes[j] = routes[j];
+        }
+
+        for (; i < arr.length; i++) {
+            
+            for (k in $data.routes) {
+                arr[i] === k && delete $data.routes[k];
+            }
+
+        }
 
         return $data;
     }

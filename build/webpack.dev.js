@@ -56,10 +56,7 @@ function startDev(port) {
 
         qrcode.generate(startPage, { small: true });
 
-        if (!/(192\.168)|(10\.6)/.test(localhost)) {
-
-            open(startPage, 'chrome');
-        }
+        open(startPage, 'chrome');
 
     });
 }
