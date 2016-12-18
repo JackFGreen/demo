@@ -1,9 +1,15 @@
 <template>
 
-    <p>路由列表</p>
+    <h2>routes list</h2>
 
-    <a v-for="obj in routes" href="#!{{obj.fullPath}}">{{obj.name}}</a>
-
+    <ul>
+        <li v-for="obj in routes">
+            <h3>
+                <a href="#!{{obj.fullPath}}">{{obj.name}}</a>
+            </h3>
+        </li>
+    </ul>
+    
 </template>
 
 <script type="text/javascript">

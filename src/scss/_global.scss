@@ -1,0 +1,13 @@
+/**
+ * 
+ */
+
+$base_font: 100; //默认 字体 大小
+$html_font_size: $base_font + px;
+
+$base_width: 320; //默认 屏幕 宽度
+$design_width: 640; //默认 设计稿 宽度
+
+@function rem($px, $width: $design_width) {
+    @return($px * $base_width) / ($base_font * $width) * 1 rem;
+}
