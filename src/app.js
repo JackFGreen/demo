@@ -4,7 +4,7 @@ var routes = require('./routes');
 
 var rem = require('../src/service/rem.js');
 
-rem();
+// rem();
 
 require('../src/scss/layout.scss');
 
