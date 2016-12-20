@@ -1,8 +1,39 @@
-/**
- * 
- */
+/*! _global */
 
-$base_font: 10; //默认 字体 大小
+// color
+$base_color: #333 !default;
+
+// size
+
+
+// layout
+%fl {
+    float: left;
+}
+
+%fr {
+    float: right;
+}
+
+%clearfix {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+        font: 0/0 a;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+/**
+ * rem转换
+ * @type {Number}
+ * rem(30)
+ * rem(30, 750)
+ */
+$base_font: 10 !default; //默认 字体 大小
 $html_font_size: $base_font + px;
 
 $base_width: 320; //默认 屏幕 宽度
@@ -11,3 +42,48 @@ $design_width: 640; //默认 设计稿 宽度
 @function rem($px, $width: $design_width) {
     @return($px * $base_width) / ($base_font * $width) * 1rem;
 }
+
+/**
+ * 网格系统
+ *
+ <div class="grid">
+     <div class="grid-item grid-item-12">12</div>
+     <div class="grid-item grid-item-12">12</div>
+ </div>
+
+ <div class="grid grid-gutter">
+     <div class="grid-item grid-item-12">12</div>
+     <div class="grid-item grid-item-12">12</div>
+ </div>
+ */
+$grid_class: grid;
+$grid_item_class: grid-item;
+$grid_gutter_class: grid-gutter;
+
+$gird_column: 24;//分24栏
+$grid_gutter: 2%;//间距8px 可选
+
+.#{$grid_class} {
+    @extend %clearfix;
+}
+
+.#{$grid_gutter_class} {
+    margin: 0 -#{$grid_gutter};
+}
+
+.#{$grid_item_class} {
+    @extend %fl;
+}
+
+.#{$grid_gutter_class} {
+    .#{$grid_item_class} {
+        padding: 0 #{$grid_gutter};
+    }
+}
+
+@for $i from 1 through $gird_column {
+    .#{$grid_item_class}-#{$i} {
+        width: $i / $gird_column * 100%;
+    }
+}
+

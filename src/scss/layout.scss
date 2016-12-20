@@ -1,17 +1,17 @@
-@import './_global.scss';
 @import './normalize.scss';
 @import './reset.scss';
+@import './_global.scss';
 
-/* base */
+/*! base */
 html {
     font-size: 62.5%;
 }
 
 body {
     font-size: 1.4rem;
-    color: #333;
+    color: $base_color;
     line-height: 1.5;
-    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
 h1 {

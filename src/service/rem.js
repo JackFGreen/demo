@@ -17,5 +17,7 @@ module.exports = function(_font, _width) {
 
         docEl.style.fontSize = _size * base_font + 'px';
     }
-    window.onresize = setHtmlFont(base_font, base_width);
+    window.onresize = function() {
+        setHtmlFont(base_font, base_width);
+    }
 }

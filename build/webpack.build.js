@@ -50,6 +50,9 @@ config.plugins.unshift(
     //https://github.com/webpack/extract-text-webpack-plugin/issues/27
     // new ExtractTextPlugin('css/layout.[contenthash:7].css'),
     new ExtractTextPlugin('layout.[contenthash:7].css'),
+/*    new ExtractTextPlugin('layout.[contenthash:7].css', {
+        allChunks : true
+    }),*/
 
     //压缩 会把autoprefixer 的browsers设为默认值，之前配置无效  css?-autoprefixer
     new webpack.optimize.UglifyJsPlugin({
