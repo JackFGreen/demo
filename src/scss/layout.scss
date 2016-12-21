@@ -9,9 +9,9 @@ html {
 
 body {
     font-size: 1.4rem;
-    color: $base_color;
+    color: $color_base;
     line-height: 1.5;
-    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+    @extend %font_family;
 }
 
 h1 {
@@ -32,13 +32,17 @@ h6 {
     font-size: 1.4rem;
 }
 
-code,
-pre {
-    font-family: Monaco, Menlo, Consolas, "Courier New", FontAwesome, monospace;
-}
-
 img {
     max-width: 100%;
+}
+
+pre, code, kbd {
+    @extend %font_family;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
 }
 /* @media screen and (max-width: 640px) {
     h3 {

@@ -1,18 +1,37 @@
 /*! _global */
 
+/* variable
+   ========================================================================== */
+
 // color
-$base_color: #333 !default;
+$color_base: #333 !default;
+$color_a: #ccc !default;
 
 // size
+$size_large: 2.4rem !default;
+$size_large: 2.4rem !default;
+$size_large: 2.4rem !default;
 
+// direction
+$direction: top right bottom left;
+$d_t: nth($direction, 1);
+$d_r: nth($direction, 2);
+$d_b: nth($direction, 3);
+$d_l: nth($direction, 4);
 
-// layout
+/* placeholder
+   ========================================================================== */
+
+%font_family {
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
 %fl {
-    float: left;
+    float: $d_l;
 }
 
 %fr {
-    float: right;
+    float: $d_r;
 }
 
 %clearfix {
@@ -27,6 +46,10 @@ $base_color: #333 !default;
     }
 }
 
+
+/* function
+   ========================================================================== */
+
 /**
  * rem转换
  * @type {Number}
@@ -36,12 +59,35 @@ $base_color: #333 !default;
 $base_font: 10 !default; //默认 字体 大小
 $html_font_size: $base_font + px;
 
-$base_width: 320; //默认 屏幕 宽度
-$design_width: 640; //默认 设计稿 宽度
+$base_width: 320 !default; //默认 屏幕 宽度
+$design_width: 640 !default; //默认 设计稿 宽度
 
 @function rem($px, $width: $design_width) {
     @return($px * $base_width) / ($base_font * $width) * 1rem;
 }
+
+
+/* mixin
+   ========================================================================== */
+
+/**
+ * border
+ */
+$bd_width: 1px;
+$bd_style: solid;
+$bd_color: $color_a;
+$bd_direction: $d_b;
+
+@mixin bd($width: $bd_width, $style: $bd_style, $color: $bd_color) {
+    border: $width $style $color;
+}
+
+@mixin bd-d($direction: $bd_direction) {
+    border-#{$direction}: 1px solid red;
+}
+
+/* component
+   ========================================================================== */
 
 /**
  * 网格系统
@@ -65,6 +111,7 @@ $grid_gutter: 2%;//间距8px 可选
 
 .#{$grid_class} {
     @extend %clearfix;
+    @include bd-d;
 }
 
 .#{$grid_gutter_class} {
