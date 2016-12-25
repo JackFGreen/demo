@@ -15,3 +15,73 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/*! base */
+html {
+    font-size: $html_font_size;
+}
+
+body {
+    @extend %font_family;
+    font-size: $size_base;
+    color: $color_base;
+    line-height: 1.5;
+}
+
+$headings: (
+    h1: $size_lg,
+    h2: $size_md,
+    h3: $size_sm
+) !default;
+
+@each $header, $size in $headings {
+    #{$header} {
+        font-size: $size;
+    }
+}
+
+h4,
+h5,
+h6 {
+    font-size: $size_base;
+}
+
+img {
+    max-width: 100%;
+}
+
+pre, code, kbd {
+    @extend %font_family;
+}
+
+pre {
+    background: $color_d;
+}
+
+mark {
+    color: $color_b;
+    padding: 2px 4px;
+    background: $color_c;
+}
+
+hr {
+    @include border(all, 0);
+    @include border(top);
+}
+/* @media screen and (max-width: 640px) {
+    h3 {
+        font-size: 30px;
+    }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+    h3 {
+        font-size: 40px;
+    }
+}
+@media screen and (max-width: 1025px) {
+    h3 {
+        font-size: 50px;
+    }
+}
+ */
+

@@ -1,0 +1,49 @@
+/**
+ * _component
+ * 公用的组件样式
+ */
+
+/**
+ * 网格系统
+ *
+ <div class="grid">
+     <div class="grid-col grid-col-12">12</div>
+     <div class="grid-col grid-col-12">12</div>
+ </div>
+
+ <div class="grid grid-gutter">
+     <div class="grid-col grid-col-12">12</div>
+     <div class="grid-col grid-col-12">12</div>
+ </div>
+ */
+
+// class-name
+$grid: grid !default;
+$grid_col: -col !default;
+$grid_gutter: -gutter !default;
+
+$grid_column: 24 !default;//分24栏
+$grid_gutter_space: 2% !default;//间距8px 可选
+
+.#{$grid} {
+    @extend %clearfix;
+
+    &#{$grid_col} {
+        @extend %float-l;
+    }
+
+    &#{$grid_gutter} {
+        margin: 0 (-$grid_gutter_space);
+
+        .#{$grid}#{$grid_col} {
+            padding: 0 ($grid_gutter_space);
+        }
+    }
+}
+
+@for $i from 1 through $grid_column {
+    .#{$grid}#{$grid_col}-#{$i} {
+        width: $i / $grid_column * 100%;
+    }
+}
+

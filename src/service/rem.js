@@ -7,7 +7,7 @@
 module.exports = function(_font, _width) {
     var docEl = document.documentElement;
 
-    var base_font = _font || 10; //默认 字体 大小
+    var base_font = _font || 100; //默认 字体 大小
     var base_width = _width || 320; //默认 屏幕 宽度 iphone5
 
     function setHtmlFont(base_font, base_width) {

@@ -1,4 +1,7 @@
-/*! _global */
+/**
+ * _global
+ * scss变量，placeholder，mixin，function
+ */
 
 /* variable
    ========================================================================== */
@@ -6,18 +9,33 @@
 // color
 $color_base: #333 !default;
 $color_a: #ccc !default;
+$color_b: #c7254e !default;
+$color_c: #f5d6df !default;
+$color_d: #eee !default;
 
 // size
-$size_large: 2.4rem !default;
-$size_large: 2.4rem !default;
-$size_large: 2.4rem !default;
+$size_base: 0.14rem !default;
+$size_lg: 0.24rem !default;
+$size_md: 0.20rem !default;
+$size_sm: 0.16rem !default;
 
 // direction
-$direction: top right bottom left;
-$d_t: nth($direction, 1);
-$d_r: nth($direction, 2);
-$d_b: nth($direction, 3);
-$d_l: nth($direction, 4);
+$directions: (
+    top: top,
+    right: right,
+    bottom: bottom,
+    left: left
+) !default;
+
+/**
+ * 获取方位值
+ * @param  {String} $d 方位
+ * @return {String}    方位
+ * e.g. direction(left) => left
+ */
+@function direction($d) {
+    @return map-get($directions, $d);
+}
 
 /* placeholder
    ========================================================================== */
@@ -26,12 +44,12 @@ $d_l: nth($direction, 4);
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
-%fl {
-    float: $d_l;
+%float-l {
+    float: direction(left);
 }
 
-%fr {
-    float: $d_r;
+%float-r {
+    float: direction(right);
 }
 
 %clearfix {
@@ -51,19 +69,22 @@ $d_l: nth($direction, 4);
    ========================================================================== */
 
 /**
- * rem转换
- * @type {Number}
+ * rem($px [, $width]?)
+ * @param  {[Number]} $px     [px值]
+ * @param  {[Number]} $width: $design_width [设计稿宽度]
+ * @return {[Number]}         [rem值]
+ * e.g.
  * rem(30)
  * rem(30, 750)
  */
-$base_font: 10 !default; //默认 字体 大小
+$base_font: 100 !default; //默认 字体 大小
 $html_font_size: $base_font + px;
 
 $base_width: 320 !default; //默认 屏幕 宽度
 $design_width: 640 !default; //默认 设计稿 宽度
 
 @function rem($px, $width: $design_width) {
-    @return($px * $base_width) / ($base_font * $width) * 1rem;
+    @return ($px * $base_width) / ($base_font * $width) * 1rem;
 }
 
 
@@ -71,66 +92,42 @@ $design_width: 640 !default; //默认 设计稿 宽度
    ========================================================================== */
 
 /**
- * border
- */
-$bd_width: 1px;
-$bd_style: solid;
-$bd_color: $color_a;
-$bd_direction: $d_b;
-
-@mixin bd($width: $bd_width, $style: $bd_style, $color: $bd_color) {
-    border: $width $style $color;
-}
-
-@mixin bd-d($direction: $bd_direction) {
-    border-#{$direction}: 1px solid red;
-}
-
-/* component
-   ========================================================================== */
-
-/**
- * 网格系统
+ * border($d [, $width [, $color [, $style]? ]? ]?)
+ * 
+ * $d: [all | top | right | bottom | left]  must
  *
- <div class="grid">
-     <div class="grid-item grid-item-12">12</div>
-     <div class="grid-item grid-item-12">12</div>
- </div>
-
- <div class="grid grid-gutter">
-     <div class="grid-item grid-item-12">12</div>
-     <div class="grid-item grid-item-12">12</div>
- </div>
+ * default: 1px solid #ccc;
+ *
+ * e.g.
+ * border(all) => border: default;
+ * border(top) => border-top: default;
+ * 
+ * border(all, 0) => border: 0;
+ * border(top, 0) => border-top: 0;
+ * 
+ * border(all, 5px, red) => border: 5px solid red;
+ * border(top, 5px, red, dashed) => border-top: 5px dashed red;
  */
-$grid_class: grid;
-$grid_item_class: grid-item;
-$grid_gutter_class: grid-gutter;
+$border_width: 1px !default;
+$border_color: #ccc !default;
+$border_style: solid !default;
 
-$gird_column: 24;//分24栏
-$grid_gutter: 2%;//间距8px 可选
+@mixin border(
+    $d: (),
+    $width: $border_width,
+    $color: $border_color,
+    $style: $border_style
+) {
+    $border-name: if($d == all, border, border-#{$d});
 
-.#{$grid_class} {
-    @extend %clearfix;
-    @include bd-d;
-}
-
-.#{$grid_gutter_class} {
-    margin: 0 -#{$grid_gutter};
-}
-
-.#{$grid_item_class} {
-    @extend %fl;
-}
-
-.#{$grid_gutter_class} {
-    .#{$grid_item_class} {
-        padding: 0 #{$grid_gutter};
+    @if $width {
+        @if $width != 0 {
+            #{$border-name}: $width $style $color;
+        } @else {
+            #{$border-name}: 0;
+        }
+    } @else {
+        #{$border-name}: $width $style $color;
     }
-}
 
-@for $i from 1 through $gird_column {
-    .#{$grid_item_class}-#{$i} {
-        width: $i / $gird_column * 100%;
-    }
 }
-
