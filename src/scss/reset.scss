@@ -22,10 +22,11 @@ html {
 }
 
 body {
-    @extend %font_family;
+    @extend %font-family;
     font-size: $size_base;
     color: $color_base;
     line-height: 1.5;
+    word-break: break-all;
 }
 
 $headings: (
@@ -50,14 +51,6 @@ img {
     max-width: 100%;
 }
 
-pre, code, kbd {
-    @extend %font_family;
-}
-
-pre {
-    background: $color_d;
-}
-
 mark {
     color: $color_b;
     padding: 2px 4px;
@@ -68,6 +61,22 @@ hr {
     @include border(all, 0);
     @include border(top);
 }
+
+pre, code, kbd {
+    @extend %font-family;
+}
+
+pre {
+    white-space: pre-wrap;
+    background: $color_d;
+    padding: 15px;
+    @include border(all);
+}
+
+.eg-code {
+    padding: 0 20px;
+}
+
 /* @media screen and (max-width: 640px) {
     h3 {
         font-size: 30px;

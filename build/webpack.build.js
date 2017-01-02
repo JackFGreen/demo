@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var config = require('./webpack.config.js');
+var config = require('./webpack.base.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -28,7 +28,7 @@ config.module.loaders.forEach(function(el) {
 config.plugins.unshift(
     //清空dist
     new CleanWebpackPlugin(['dist'], {
-        // 根的绝对路径 webpack.config的地址
+        // 根的绝对路径
         "root": path.resolve(__dirname, '../'),
         // 将log写到 console.
         "verbose": true,
@@ -37,7 +37,7 @@ config.plugins.unshift(
     }),
 
     //通用模块单独打包 manifest为runtime文件，里面包含了每个文件的hash，每次打包都会改变
-    //htmlWebpackPlugin 从右到左 依次插入index.html，如果 service 依赖于 lib ，需要把 service 放到 lib 前， eg. service 为 Vue.direcitve，lib 为 vue
+    //htmlWebpackPlugin 从右到左 依次插入index.html，如果 service 依赖于 lib ，需要把 service 放到 lib 前， e.g. service 为 Vue.direcitve，lib 为 vue
     new webpack.optimize.CommonsChunkPlugin({
         // names: ['service', 'lib', 'manifest'],
         names: ['lib', 'manifest'],

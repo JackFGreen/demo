@@ -15,6 +15,7 @@
   "author": "demo",
   "license": "MIT",
   "dependencies": {
+    "highlight.js": "^9.9.0",
     "vue": "^1.0.26",
     "vue-router": "^0.7.13"
   },

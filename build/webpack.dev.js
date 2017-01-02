@@ -6,7 +6,7 @@ var ip = require('ip');
 var open = require('open');
 var qrcode = require('qrcode-terminal');
 
-var config = require('./webpack.config.js');
+var config = require('./webpack.base.js');
 
 var port = 8888;
 var localhost = ip.address();
@@ -67,7 +67,7 @@ function checkPort(port, callback) {
     var server = net.createServer().listen(port)
 
     server.on('listening', function() { // 执行这块代码说明端口未被占用
-        server.close() // 关闭服务
+        server.close(); // 关闭服务
         console.log('\n The port ' + port + ' is available'); // 控制台输出信息
 
         typeof callback === 'function' && callback(port);

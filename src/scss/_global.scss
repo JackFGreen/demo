@@ -12,6 +12,7 @@ $color_a: #ccc !default;
 $color_b: #c7254e !default;
 $color_c: #f5d6df !default;
 $color_d: #eee !default;
+$color_e: #3bb4f2!default;
 
 // size
 $size_base: 0.14rem !default;
@@ -40,10 +41,17 @@ $directions: (
 /* placeholder
    ========================================================================== */
 
-%font_family {
+%font-family {
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
+%list-style-none {
+    list-style: none;
+}
+
+////////
+// float //
+////////
 %float-l {
     float: direction(left);
 }
@@ -63,6 +71,34 @@ $directions: (
         clear: both;
     }
 }
+
+//////////////
+// position //
+//////////////
+%pos-r {
+    position: relative;
+}
+
+%pos-a {
+    position: absolute;
+}
+
+%pos-cont {
+    content: '';
+}
+
+%pos-t-l {
+    top: 0;
+    left: 0;
+}
+
+////////////
+// margin //
+////////////
+%mg-0-auto {
+    margin: 0 auto;
+}
+
 
 
 /* function
