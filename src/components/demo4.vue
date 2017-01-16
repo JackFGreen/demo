@@ -19,6 +19,12 @@
 
     <div class="test-bg"></div>
 
+    <ul class="counter">
+        <li>title</li>
+        <li>title</li>
+        <li>title</li>
+    </ul>
+
 </template>
 
 <script>
@@ -116,5 +122,13 @@ $iconfont-version: 'v0.0.1';
     background: url(../images/t4.jpg);
 }
 
+.counter {
+    counter-reset: test test2;
+
+    li:before {
+        counter-increment: test test2;
+        content: counter(test) '.' counter(test2);
+    }
+}
 
 </style>
