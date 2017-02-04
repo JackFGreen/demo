@@ -49,6 +49,15 @@ module.exports = {
         }
     },
 
+    '/svg': {
+        name: 'svg',
+        component: function(resolve) {
+            require.ensure([], function () {
+                resolve(require('./components/svg'));
+            }, './components/svg');
+        }
+    },
+
     '/common': {
         name: 'common',
         component: function(resolve) {
