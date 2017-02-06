@@ -58,6 +58,15 @@ module.exports = {
         }
     },
 
+    '/test': {
+        name: 'test',
+        component: function(resolve) {
+            require.ensure([], function () {
+                resolve(require('./pages/test'));
+            }, './pages/test');
+        }
+    },
+
     '/common': {
         name: 'common',
         component: function(resolve) {
