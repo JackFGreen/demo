@@ -13,31 +13,21 @@
 </template>
 
 <script type="text/javascript">
-var routes = require('../routes');
+import routes from '../routes';
 
-var $data = {
-    routes: {}
-};
-
-module.exports = {
-
-    data: function() {
-        var i = 0, j, k;
+export default {
+    data() {
         var arr = ['/index'];//过滤不显示的路由
 
-        for (j in routes) {
-            $data.routes[j] = routes[j];
-        }
-
-        for (; i < arr.length; i++) {
-            
-            for (k in $data.routes) {
-                arr[i] === k && delete $data.routes[k];
+        for (let i = 0; i < arr.length; i++) {
+            for (let k in routes) {
+                arr[i] === k && delete routes[k];
             }
-
         }
 
-        return $data;
+        return {
+            routes: routes
+        }
     }
 }
 

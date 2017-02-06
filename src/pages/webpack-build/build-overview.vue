@@ -2,10 +2,9 @@
 
 <div id="build-overview">
 
-    <h1>编译配置</h1>
-    <hr>
+    <h2>编译配置</h2>
 
-    <h2>webpack.build.js</h2>
+    <h3>webpack.build.js</h3>
     <div class="eg-code">
         <pre>
             <code>
@@ -119,14 +118,9 @@ webpack(config, function(err, stats) {
 
 <script>
 
-var  $data = {
-
-}
-
-module.exports = {
-    data: function() {
-
-        return $data;
+export default {
+    data() {
+        return {}
     }
 }
 

@@ -17,51 +17,49 @@
 </template>
 
 <script>
-var $data = {
-    arg: '',
-    titleList: [
-        {
-            primaryTitle: 'config-base',
-            basePath: '/webpack-vue/',
-            secondTitle: [
+
+export default {
+    data() {
+        return {
+            arg: '',
+            titleList: [
                 {
-                    title: 'overview',
-                    link: 'base-overview'
-                }
-            ]
-        },
-        {
-            primaryTitle: 'config-dev',
-            basePath: '/webpack-vue/',
-            secondTitle: [
+                    primaryTitle: 'config-base',
+                    basePath: '/webpack-vue/',
+                    secondTitle: [
+                        {
+                            title: 'overview',
+                            link: 'base-overview'
+                        }
+                    ]
+                },
                 {
-                    title: 'overview',
-                    link: 'dev-overview'
-                }
-            ]
-        },
-        {
-            primaryTitle: 'config-build',
-            basePath: '/webpack-vue/',
-            secondTitle: [
+                    primaryTitle: 'config-dev',
+                    basePath: '/webpack-vue/',
+                    secondTitle: [
+                        {
+                            title: 'overview',
+                            link: 'dev-overview'
+                        }
+                    ]
+                },
                 {
-                    title: 'overview',
-                    link: 'build-overview'
+                    primaryTitle: 'config-build',
+                    basePath: '/webpack-vue/',
+                    secondTitle: [
+                        {
+                            title: 'overview',
+                            link: 'build-overview'
+                        }
+                    ]
                 }
             ]
         }
-    ]
-}
-
-module.exports = {
-    data: function() {
-
-        return $data;
     },
 
     methods: {
-        setActive: function(index) {
-            $data.arg = index;
+        setActive(index) {
+            this.arg = index;
         }
     }
 }
@@ -76,10 +74,6 @@ module.exports = {
     a {
         display: block;
         padding-left: 28px;
-
-        &:visited {
-            color: inherit;
-        }
     }
 
     p {

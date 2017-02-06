@@ -2,10 +2,9 @@
 
 <div id="base-overview">
 
-    <h1>基本配置</h1>
-    <hr>
+    <h2>基本配置</h2>
 
-    <h2>package.json</h2>
+    <h3>package.json</h3>
     <div class="eg-code">
         <pre>
             <code>
@@ -111,7 +110,7 @@
         </pre>
     </div>
 
-    <h2>webpack.base.js</h2>
+    <h3>webpack.base.js</h3>
     <div class="eg-code">
         <pre>
             <code>
@@ -298,14 +297,9 @@ module.exports = {
 
 <script>
 
-var  $data = {
-
-}
-
-module.exports = {
-    data: function() {
-
-        return $data;
+export default {
+    data() {
+        return {}
     }
 }
 

@@ -2,10 +2,9 @@
 
 <div id="dev-overview">
 
-    <h1>开发配置</h1>
-    <hr>
+    <h2>开发配置</h2>
 
-    <h2>webpack.dev.js</h2>
+    <h3>webpack.dev.js</h3>
     <div class="eg-code">
         <pre>
             <code>
@@ -117,14 +116,9 @@ checkPort(port, startDev);
 
 <script>
 
-var  $data = {
-
-}
-
-module.exports = {
-    data: function() {
-
-        return $data;
+export default {
+    data() {
+        return {}
     }
 }
 
