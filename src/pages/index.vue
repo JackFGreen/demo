@@ -1,40 +1,40 @@
 <template>
 
-    <p>路由列表</p>
+    <div id="page-index">
+        <p @click="test()">路由列表</p>
+        <input type="text" v-model="filterText">
 
-    <a v-for="obj in routes" href="#!{{obj.fullPath}}">{{obj.name}}</a>
+        <router-link v-for="obj in filterRoutes" :to="obj.path">{{obj.name}}</router-link>
+    </div>
 
 </template>
 
-<script type="text/javascript">
-var routes = require('../routes');
+<script>
+const routes = require('../routes');
 
-var $data = {
-    routes: {}
-};
+export default {
+    data() {
+        const hideReg = /^(\*|\/|\/index|\/not\-found)$/; // 过滤不显示的路由
+        const routesArr = routes.filter((item, index) => {
+            return !hideReg.test(item.path);
+        });
 
-module.exports = {
-
-    data: function() {
-        var i = 0, j, k;
-        var arr = ['/index'];//过滤不显示的路由
-
-        for (j in routes) {
-            $data.routes[j] = routes[j];
+        return {
+            routesArr,
+            filterText: ''
         }
+    },
+    computed: {
+        filterRoutes: function() {
+            var _this = this;
+            var reg = new RegExp(_this.filterText);
 
-        for (; i < arr.length; i++) {
-            
-            for (k in $data.routes) {
-                arr[i] === k && delete $data.routes[k];
-            }
-
+            return _this.routesArr.filter(function(item) {
+                return reg.test(item.name);
+            });
         }
-
-        return $data;
     }
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -42,5 +42,4 @@ a {
     display: block;
     line-height: 30px;
 }
-
 </style>

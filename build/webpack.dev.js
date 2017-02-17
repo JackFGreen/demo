@@ -8,7 +8,7 @@ var qrcode = require('qrcode-terminal');
 
 var config = require('./webpack.config.js');
 
-var port = 8888;
+var port = 2222;
 var localhost = ip.address();
 
 config.plugins.push(
