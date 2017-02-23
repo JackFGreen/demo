@@ -1,6 +1,7 @@
 <template>
 
     <div id="page-index">
+        {{example}}
         <p @click="test()">路由列表</p>
         <input type="text" v-model="filterText">
 
@@ -25,6 +26,17 @@ export default {
         }
     },
     computed: {
+/*        example: function() {
+            // 只有 filterText 改变才改变
+            return Date.now() + this.filterText
+        },*/
+        example: {
+            cache: false,
+            get: function() {
+                // 实时改变，不包括DOM
+                return Date.now() + this.filterText
+            }
+        },
         filterRoutes: function() {
             var _this = this;
             var reg = new RegExp(_this.filterText);
@@ -32,6 +44,11 @@ export default {
             return _this.routesArr.filter(function(item) {
                 return reg.test(item.name);
             });
+        }
+    },
+    methods: {
+        test() {
+            console.log(this.example)
         }
     }
 }
