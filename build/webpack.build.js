@@ -5,15 +5,13 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 config.entry.lib = [
+    // 'jquery',
     'vue',
-    'vue-router',
-    'jquery'
+    'vue-router'
 ];
-config.entry.service = [
-    path.resolve(__dirname, '../src/service/service'),
-    path.resolve(__dirname, '../src/service/service1')
-];
-
+/*config.entry.service = [
+    path.resolve(__dirname, '../src/service/test.js')
+];*/
 config.output.filename = '[name].[chunkhash:7].js';
 
 // config.output.publicPath = '//cdn.com/demo/';
@@ -38,10 +36,11 @@ config.plugins.unshift(
         "exclude": []
     }),
 
-    //通用模块单独打包 vendor为runtime文件，每次打包都会改变
-    //打包顺序从右到左
+    //通用模块单独打包 manifest为runtime文件，里面包含了每个文件的hash，每次打包都会改变
+    //htmlWebpackPlugin 从右到左 依次插入index.html，如果 service 依赖于 lib ，需要把 service 放到 lib 前， eg. service 为 Vue.direcitve，lib 为 vue
     new webpack.optimize.CommonsChunkPlugin({
-        names: ['service', 'lib', 'vendor'],
+        // names: ['service', 'lib', 'manifest'],
+        names: ['lib', 'manifest'],
         filename: '[name].[chunkhash:7].js' //默认加hash
     }),
 

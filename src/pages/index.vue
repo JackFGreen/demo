@@ -1,32 +1,57 @@
 <template>
 
-    <p>home</p>
+    <div id="page-index">
+        {{example}}
+        <p @click="test()">路由列表</p>
+        <input type="text" v-model="filterText">
 
-    <a v-for="obj in routes" href="#!{{obj.fullPath}}">{{obj.name}}</a>
-
-    <img src="../images/t1.gif">
-    <img src="../images/t3.jpg">
-
-    <div class="test-bg"></div>
+        <router-link v-for="obj in filterRoutes" :to="obj.path">{{obj.name}}</router-link>
+    </div>
 
 </template>
 
-<script type="text/javascript">
-var routes = require('../routes');
-console.log(routes)
+<script>
+const routes = require('../routes');
 
-var $data = {
-    routes: routes
-};
+export default {
+    data() {
+        const hideReg = /^(\*|\/|\/index|\/not\-found)$/; // 过滤不显示的路由
+        const routesArr = routes.filter((item, index) => {
+            return !hideReg.test(item.path);
+        });
 
-module.exports = {
+        return {
+            routesArr,
+            filterText: ''
+        }
+    },
+    computed: {
+        /*        example: function() {
+                    // 只有 filterText 改变才改变
+                    return Date.now() + this.filterText
+                },*/
+        example: {
+            cache: false,
+            get: function() {
+                // 实时改变，不包括DOM
+                return Date.now() + this.filterText
+            }
+        },
+        filterRoutes: function() {
+            var _this = this;
+            var reg = new RegExp(_this.filterText, 'i');
 
-    data: function() {
-
-        return $data;
+            return _this.routesArr.filter(function(item) {
+                return reg.test(item.name);
+            });
+        }
+    },
+    methods: {
+        test() {
+            console.log(this.example)
+        }
     }
 }
-
 </script>
 
 <style scoped lang="scss">
@@ -34,12 +59,4 @@ a {
     display: block;
     line-height: 30px;
 }
-.test-bg {
-    width: 200px;
-    height: 200px;
-    background: url(../images/t4.jpg) no-repeat;
-    background-size: 100%;
-    display: flex;
-}
-
 </style>

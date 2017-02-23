@@ -1,13 +1,13 @@
 <template>
+    <div>
+        <div @click="alert()">demo2.vue</div>
 
-    <div @click="alert()">demo2.vue</div>
+        <div>{{msg}}</div>
 
-    <div>{{msg}}</div>
+        <img src="../images/logo.jpeg">
 
-    <img src="../images/logo.jpeg">
-
-    <div class="logo"></div>
-
+        <div class="logo"></div>
+    </div>
 </template>
 
 <script>
@@ -20,29 +20,28 @@ console.log($)
 // $('.logo').html('logo');
 $('body').append('<p>jQuery</p>');
 
-    module.exports = {
+module.exports = {
 
-            data: function() {
-                return {}
-            },
-            methods: {
-                alert: function() {
-                    alert('demo2.vue');
-                }
-            }
-
+    data: function() {
+        return {}
+    },
+    methods: {
+        alert: function() {
+            alert('demo2.vue');
+        }
     }
+
+}
 </script>
 
 <style scoped lang="scss">
-        div {
-            color: #ccc;
-            display: flex;
-        }
+div {
+    color: #ccc;
+    display: flex;
+}
 
-        .logo {
-            width: 50px;
-            height: 50px;
-        }
-
+.logo {
+    width: 50px;
+    height: 50px;
+}
 </style>

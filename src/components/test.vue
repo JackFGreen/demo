@@ -1,24 +1,24 @@
 <template>
+    <div>
+        <h1><small>webpack + vue</small></h1>
+        <hr>
+        <h2><mark>测试</mark></h2>
 
-    <h1><small>webpack + vue</small></h1>
-    <hr>
-    <h2><mark>测试</mark></h2>
+        <article><big>123</big></article>
 
-    <article><big>123</big></article>
+        <div class="heart"></div>
 
-    <div class="heart"></div>
+        <div class="grid">
+            <div class="grid-col grid-col-12">12</div>
+            <div class="grid-col grid-col-12">12</div>
+        </div>
 
-    <div class="grid">
-        <div class="grid-col grid-col-12">12</div>
-        <div class="grid-col grid-col-12">12</div>
-    </div>
-    
-    <div class="grid grid-gutter">
-        <div class="grid-col grid-col-12">12</div>
-        <div class="grid-col grid-col-12">12</div>
-    </div>
+        <div class="grid grid-gutter">
+            <div class="grid-col grid-col-12">12</div>
+            <div class="grid-col grid-col-12">12</div>
+        </div>
 
-    <pre>
+        <pre>
         <code>
             <span>function test() {
                 console.log('test');
@@ -26,18 +26,18 @@
         </code>
     </pre>
 
-    <input type="text" list="countries" />
-    <datalist id="countries">
-        <option value="中国"></option>
-        <option value="美国"></option>
-        <option value="日本"></option>
-    </datalist>
+        <input type="text" list="countries" />
+        <datalist id="countries">
+            <option value="中国"></option>
+            <option value="美国"></option>
+            <option value="日本"></option>
+        </datalist>
 
-    <br>
+        <br>
 
-    <canvas id="myCanvas" @click="click"></canvas>
+        <canvas id="myCanvas" @click="click"></canvas>
+    </div>
 </template>
-
 
 
 <script>
@@ -66,11 +66,11 @@ export default {
         }
     },
 
-    ready(){
-        var canvas=document.getElementById('myCanvas'); 
-        var ctx=canvas.getContext('2d'); 
-        ctx.fillStyle='#FF0000'; 
-        ctx.fillRect(0,0,80,100); 
+    ready() {
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#FF0000';
+        ctx.fillRect(0, 0, 80, 100);
     },
 
     methods: {
@@ -91,14 +91,13 @@ export default {
 
 <style lang="scss">
 @import '../scss/_global.scss';
-
 .heart {
     position: relative;
     width: 100px;
     height: 90px;
     background: pink;
-
-    &:before, &:after {
+    &:before,
+    &:after {
         content: '';
         position: absolute;
         left: 50px;

@@ -1,6 +1,6 @@
-var App = Vue.use(VueRouter).extend({});
-var router = new VueRouter();
-var routes = require('./routes');
+import routes from'./routes';
+
+const router = new VueRouter({routes});
 
 // var $ = require('jquery');
 
@@ -14,6 +14,9 @@ import ajax from './service/ajax.js';
 
 window.ajax = ajax;
 
-router.map(routes).redirect({'*': '/index'}).afterEach(function(arg) {
-    document.title = arg.to.name;
-}).start(App, '#app');
+
+Vue.use(VueRouter);
+
+const App = new Vue({
+    router
+}).$mount('#app');

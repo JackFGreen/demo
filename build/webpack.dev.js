@@ -1,25 +1,16 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 
+var net = require('net');
 var ip = require('ip');
 var open = require('open');
 var qrcode = require('qrcode-terminal');
 
 var config = require('./webpack.config.js');
 
-var port = 8888;
+var port = 2222;
 var localhost = ip.address();
 
-var startPage = 'http://' + localhost + ':' + port + '/';
-
-//开启 souceMap url() 图片相对路径会指向 （chrome:blob or chrome:devtools），需要设置 publicPath
-//https://github.com/webpack/style-loader/blob/master/README.md
-config.output.publicPath = startPage;
-
-config.entry.app.unshift(
-    'webpack-dev-server/client?' + startPage, //热加载
-    'webpack/hot/dev-server' //热替换
-);
 config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
     //报错不会中断webpack
@@ -37,36 +28,59 @@ config.module.loaders.forEach(function(el) {
 
 config.vue.loaders.scss = 'style!css?sourceMap!sass?sourceMap';
 
-module.exports = config;
+function startDev(port) {
 
-// var dev_proxy = '';
+    var startPage = 'http://' + localhost + ':' + port + '/';
 
-new WebpackDevServer(webpack(config), {
-    // proxy: {
-    //     '**': {
-    //         ignorePath: true,
-    //         changeOrigin: true,
-    //         secure: false,
-    //         target: dev_proxy
-    //     }
-    // },
-    historyApiFallback: true,
-    hot: true,
-    stats: {
-        chunks: false,
-        colors: true
-    }
-}).listen(port, function(err, stats) {
+    //开启 souceMap url() 图片相对路径会指向 （chrome:blob or chrome:devtools），需要设置 publicPath
+    //https://github.com/webpack/style-loader/blob/master/README.md
+    config.output.publicPath = startPage;
 
-    if (err) throw err;
+    config.entry.app.unshift(
+        'webpack-dev-server/client?' + startPage, //热加载
+        'webpack/hot/dev-server' //热替换
+    );
 
-    console.log('\n Listening at ' + startPage);
+    new WebpackDevServer(webpack(config), {
+        historyApiFallback: true,
+        hot: true,
+        stats: {
+            chunks: false,
+            colors: true
+        }
+    }).listen(port, function(err, stats) {
 
-    qrcode.generate(startPage, { small: true });
+        if (err) throw err;
 
-    if (!/(192\.168)|(10\.6)/.test(localhost)) {
+        console.log('\n Listening at ' + startPage);
+
+        qrcode.generate(startPage, { small: true });
 
         open(startPage, 'chrome');
-    }
 
-});
+    });
+}
+
+// 检测端口是否被占用
+function checkPort(port, callback) {
+    // 创建服务并监听该端口
+    var server = net.createServer().listen(port)
+
+    server.on('listening', function() { // 执行这块代码说明端口未被占用
+        server.close() // 关闭服务
+        console.log('\n The port ' + port + ' is available'); // 控制台输出信息
+
+        typeof callback === 'function' && callback(port);
+    })
+
+    server.on('error', function(err) {
+        if (err.code === 'EADDRINUSE') { // 端口已经被使用
+            port++;
+            console.log('\n The port ' + port + ' is occupied, changing to a new port ' + port);
+
+            checkPort(port, callback);
+        }
+    })
+}
+
+checkPort(port, startDev);

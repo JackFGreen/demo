@@ -1,59 +1,52 @@
 <template>
+    <div>
+        <div @click="change()">demo1.vue</div>
 
-    <div @click="change()">demo1.vue</div>
+        <div @click="callChild()">{{test.msg}}</div>
 
-    <div @click="callChild()">{{test.msg}}</div>
+        <img src="../images/logo.jpeg">
 
-    <img src="../images/logo.jpeg">
+        <div class="logo"></div>
 
-    <div class="logo"></div>
-
-    <common v-bind:test="test"></common>
-
+        <common v-bind:test="test"></common>
+    </div>
 </template>
 
 <script>
-import common from './common.vue';
+var $data = {
+    test: {
+        msg: 'demo1.vue ok'
+    }
+}
 
-    var $data = {
-        test: {
-            msg: 'demo1.vue ok'
+module.exports = {
+
+    data: function() {
+        return $data;
+    },
+    methods: {
+        change: function() {
+            $data.test.msg = '111';
+        },
+
+        callChild: function() {
+            common.methods.change(function() {
+
+                console.log($data.test);
+
+            });
+
         }
-    }
-
-    module.exports = {
-
-            data: function() {
-                return $data;
-            },
-            methods: {
-                change: function() {
-                    $data.test.msg = '111';
-                },
-
-                callChild: function() {
-                    common.methods.change(function(){
-
-                        console.log($data.test);
-
-                    });
-
-                }
-
-            },
-
-            components: {
-                common: common
-            }
 
     }
+
+}
 </script>
 
 <style scoped lang="scss">
 @import '../scss/_global.scss';
-        div {
-            color: red;
-            display: flex;
-        }
-
+div {
+    color: red;
+    display: flex;
+}
 </style>
