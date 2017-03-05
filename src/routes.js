@@ -1,16 +1,17 @@
-
-module.exports = {
-
-    '/index': {
+module.exports = [
+    // index
+    {
+        path: '/index',
         name: '主页',
         component: function(resolve) {
-            require.ensure([], function () {
+            require.ensure([], function() {
                 resolve(require('./pages/index'));
             }, './pages/index');
         }
     },
 
-    '/test': {
+    {
+        path: '/test',
         name: 'test',
         component: function(resolve) {
             require.ensure([], function () {
@@ -19,7 +20,8 @@ module.exports = {
         }
     },
 
-    '/webpack-vue': {
+    {
+        path: '/webpack-vue',
         name: 'webpack-vue',
         component: function(resolve) {
             require.ensure([], function () {
@@ -27,9 +29,10 @@ module.exports = {
             }, './pages/webpack-vue');
         },
         // 子路由
-        subRoutes: {
-            '/base-overview': {
-                name: 'overview',
+        children: [
+            {
+                path: 'base-overview',
+                name: 'base-overview',
                 component: function(resolve) {
                     require.ensure([], function () {
                         resolve(require('./pages/webpack-base/base-overview'));
@@ -37,8 +40,9 @@ module.exports = {
                 }
             },
 
-            '/dev-overview': {
-                name: 'overview',
+            {
+                path: 'dev-overview',
+                name: 'dev-overview',
                 component: function(resolve) {
                     require.ensure([], function () {
                         resolve(require('./pages/webpack-dev/dev-overview'));
@@ -46,8 +50,9 @@ module.exports = {
                 }
             },
 
-            '/build-overview': {
-                name: 'overview',
+            {
+                path: 'build-overview',
+                name: 'build-overview',
                 component: function(resolve) {
                     require.ensure([], function () {
                         resolve(require('./pages/webpack-build/build-overview'));
@@ -55,7 +60,27 @@ module.exports = {
                 }
             }
 
+        ]
+    },
+    {
+        path: '/',
+        redirect: '/index'
+    },
+
+    // 404
+    {
+        path: '/not-found',
+        name: '404',
+        component: function(resolve) {
+            require.ensure([], function() {
+                resolve(require('./pages/not-found'));
+            }, './pages/not-found');
         }
+    },
+    {
+        path: '*',
+        redirect: '/index'
     }
 
-};
+
+];

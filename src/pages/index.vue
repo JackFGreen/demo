@@ -1,42 +1,57 @@
 <template>
 
-    <h2>routes list</h2>
+    <div id="page-index">
+        <p @click="test()">路由列表</p>
+        <input type="text" v-model="filterText">
 
-    <ul>
-        <li v-for="obj in routes">
-            <h3>
-                <a href="#!{{obj.fullPath}}">{{obj.name}}</a>
-            </h3>
-        </li>
-    </ul>
-    
+        <ul>
+            <li v-for="obj in filterRoutes">
+                <router-link :to="obj.path">{{obj.name}}</router-link>
+            </li>
+        </ul>
+    </div>
+
 </template>
 
-<script type="text/javascript">
-import routes from '../routes';
+<script>
+const routes = require('../routes');
 
 export default {
     data() {
-        var arr = ['/index'];//过滤不显示的路由
-
-        for (let i = 0; i < arr.length; i++) {
-            for (let k in routes) {
-                arr[i] === k && delete routes[k];
-            }
-        }
+        const hideReg = /^(\*|\/|\/index|\/not\-found)$/; // 过滤不显示的路由
+        const routesArr = routes.filter((item, index) => {
+            return !hideReg.test(item.path);
+        });
 
         return {
-            routes: routes
+            routesArr,
+            filterText: ''
+        }
+    },
+    computed: {
+        filterRoutes: function() {
+            var _this = this;
+            var reg = new RegExp(_this.filterText);
+
+            return _this.routesArr.filter(function(item) {
+                return reg.test(item.name);
+            });
+        }
+    },
+    methods: {
+        test() {
+            console.log(this.example)
         }
     }
 }
-
 </script>
 
 <style scoped lang="scss">
+#page-index {
+    padding: 0 5%;
+}
 a {
     display: block;
     line-height: 30px;
 }
-
 </style>

@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var config = require('./webpack.base.js');
+var config = require('./webpack.config.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
@@ -24,6 +24,11 @@ config.module.loaders.forEach(function(el) {
         el.loader = ExtractTextPlugin.extract('style', 'css?-autoprefixer!postcss!sass');
     }
 });
+
+config.resolve.alias = {
+    'vue': 'vue/dist/vue.min.js',
+    'vue-router': 'vue-router/dist/vue-router.min.js'
+}
 
 config.plugins.unshift(
     //清空dist
@@ -50,9 +55,9 @@ config.plugins.unshift(
     //https://github.com/webpack/extract-text-webpack-plugin/issues/27
     // new ExtractTextPlugin('css/layout.[contenthash:7].css'),
     new ExtractTextPlugin('layout.[contenthash:7].css'),
-/*    new ExtractTextPlugin('layout.[contenthash:7].css', {
-        allChunks : true
-    }),*/
+    /*    new ExtractTextPlugin('layout.[contenthash:7].css', {
+            allChunks : true
+        }),*/
 
     //压缩 会把autoprefixer 的browsers设为默认值，之前配置无效  css?-autoprefixer
     new webpack.optimize.UglifyJsPlugin({

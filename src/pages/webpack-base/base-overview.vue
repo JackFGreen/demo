@@ -41,7 +41,7 @@
     "babel-plugin-transform-runtime": "^6.8.0",
     "babel-preset-es2015": "^6.6.0",
     "babel-runtime": "^6.0.0",
-    
+
     // 清理文件
     "clean-webpack-plugin": "^0.1.14",
 
@@ -169,7 +169,7 @@ module.exports = {
     },
 
     // 引用的外部文件不打包
-    // externals 对象的 key 是给 require 时用的，e.g. require('react')，对象的value表示的是如何在 global（即window）中访问到该对象 
+    // externals 对象的 key 是给 require 时用的，e.g. require('react')，对象的value表示的是如何在 global（即window）中访问到该对象
     externals: {
         // 'jquery': 'jquery'
     },
