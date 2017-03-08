@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div id="test">
 
-        <h1><small>webpack + vue</small></h1>
+        <h1><small>test</small></h1>
         <hr>
         <h2><mark>测试</mark></h2>
 
@@ -48,44 +48,46 @@ const test = () => {
 
 export default {
     data() {
+        this.$nextTick(this.cvs)
+
+        // console.log(1)
+        /*setTimeout(function() {
+            console.log(this)
+            this.text = 'text'
+        }, 1000)*/
+        setTimeout(() => {
+            // console.log(this)
+            this.text = 'text'
+            this.tpl = 'line1\
+                    line2\
+                    line3'
+        }, 1000)
         return {}
     },
 
-    route: {
-        data(arg) {
-            console.log(1)
-            /*setTimeout(function() {
-                console.log(this)
-                this.text = 'text'
-            }, 1000)*/
-            setTimeout(() => {
-                console.log(this)
-                this.text = 'text'
-                this.tpl = 'line1\
-                    line2\
-                    line3'
-            }, 1000)
-        }
-    },
-
-    ready() {
-        var canvas = document.getElementById('myCanvas');
-        var ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#FF0000';
-        ctx.fillRect(0, 0, 80, 100);
-    },
-
     methods: {
-        click() {
-            console.log('text: ' + this.text)
+        cvs() {
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
 
-            console.log(this.$el.parentElement)
+            // console.log(canvas)
+
+            ctx.fillStyle = '#FF0000';
+            ctx.fillRect(0, 0, 80, 100);
+        },
+        click() {
+            // console.log('text: ' + this.text)
+
+            // console.log(this)
+            // console.log(this.$el)
+            // console.log(this.$el.parentElement)
             var app = this.$el.parentElement
+            var test = document.getElementById('test');
 
             var p = document.createElement('p')
             p.innerText = this.tpl
-            app.appendChild(p)
-            console.log('tpl: ' + this.tpl)
+            test.appendChild(p)
+            // console.log('tpl: ' + this.tpl)
         }
     }
 }
@@ -95,26 +97,25 @@ export default {
 @import '../scss/_global.scss';
 .heart {
     position: relative;
-    width: 100px;
-    height: 90px;
+    width: 50px;
+    height: 50px;
     background: pink;
+    transform: rotate(45deg);
+    margin: 50px auto;
     &:before,
     &:after {
         content: '';
         position: absolute;
-        left: 50px;
+        left: -25px;
         top: 0;
         width: 50px;
-        height: 80px;
-        background: red;
-        border-radius: 50px 50px 0 0;
-        transform: rotate(-45deg);
-        transform-origin: 0 100%;
+        height: 50px;
+        background: inherit;
+        border-radius: 50%;
     }
     &:before {
         left: 0;
-        transform: rotate(45deg);
-        transform-origin: 100% 100%;
+        top: -25px;
     }
 }
 </style>

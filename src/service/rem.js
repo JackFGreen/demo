@@ -4,20 +4,35 @@
  * _width   默认 屏幕 宽度
  */
 
-module.exports = function(_font, _width) {
+module.exports = function(base_font, base_width, max_width) {
     var docEl = document.documentElement;
 
-    var base_font = _font || 100; //默认 字体 大小
-    var base_width = _width || 320; //默认 屏幕 宽度 iphone5
+    base_font = base_font || 100; //默认 字体 大小
+    base_width = base_width || 320; //默认 屏幕 宽度 iphone5
+    max_width = max_width || 1080;
 
-    function setHtmlFont(base_font, base_width) {
+    var dpr = window.devicePixelRatio || 1;
+    var scale = 1 / dpr;
+
+    var viewportEl = docEl.querySelector('[name="viewport"]');
+    var content = 'width=device-width,initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + ', user-scalable=no';
+
+    if (viewportEl) {
+        viewportEl.setAttribute('content', content);
+    } else {
+        viewportEl = document.createElement('meta');
+        viewportEl.setAttribute('name', 'viewport');
+        viewportEl.setAttribute('content', content);
+        document.head.appendChild(viewportEl);
+    }
+
+    function setHtmlFont() {
         var client_width = docEl.clientWidth;
+        client_width = client_width > max_width ? max_width : client_width;
 
-        var _size = client_width / base_width;
-
-        docEl.style.fontSize = _size * base_font + 'px';
+        docEl.style.fontSize = client_width / base_width * base_font + 'px';
     }
-    window.onresize = function() {
-        setHtmlFont(base_font, base_width);
-    }
+    setHtmlFont();
+    window.onload = setHtmlFont;
+    window.onresize = setHtmlFont;
 }

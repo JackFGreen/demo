@@ -57,7 +57,7 @@ export default {
             @extend %pos-t-l;
         }
     }
-    .active {
+    .router-link-active {
         color: $color_e;
     }
 }

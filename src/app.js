@@ -1,5 +1,9 @@
-Vue.use(VueRouter);
 import routes from './routes';
+import rem from './service/rem';
+
+rem();
+
+Vue.use(VueRouter);
 const router = new VueRouter({
     // mode: 'history',
     // scrollBehavior(to, from, savedPosition) {
@@ -24,6 +28,6 @@ const App = new Vue({
     router
 }).$mount('#app');
 
-console.log(router.currentRoute)
-console.log(router.app)
-console.log(router.mode)
+// console.log(router.currentRoute)
+// console.log(router.app)
+// console.log(router.mode)

@@ -12,7 +12,7 @@ $color_a: #ccc !default;
 $color_b: #c7254e !default;
 $color_c: #f5d6df !default;
 $color_d: #eee !default;
-$color_e: #4183c4 !default;
+$color_e: #42b983 !default;
 
 // size
 $size_base: 0.14rem !default;
@@ -129,7 +129,7 @@ $design_width: 640 !default; //默认 设计稿 宽度
 
 /**
  * border($d [, $width [, $color [, $style]? ]? ]?)
- * 
+ *
  * $d: [all | top | right | bottom | left]  must
  *
  * default: 1px solid #ccc;
@@ -137,10 +137,10 @@ $design_width: 640 !default; //默认 设计稿 宽度
  * e.g.
  * border(all) => border: default;
  * border(top) => border-top: default;
- * 
+ *
  * border(all, 0) => border: 0;
  * border(top, 0) => border-top: 0;
- * 
+ *
  * border(all, 5px, red) => border: 5px solid red;
  * border(top, 5px, red, dashed) => border-top: 5px dashed red;
  */
