@@ -1,7 +1,7 @@
 import routes from './routes';
 import rem from './service/rem';
 
-rem();
+// rem();
 
 Vue.use(VueRouter);
 const router = new VueRouter({

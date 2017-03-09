@@ -75,7 +75,7 @@ export default {
 @import '../scss/_global.scss';
 #webpack-vue {
     width: 95%;
-    @extend %mg-0-auto;
+    @extend %mg-auto;
     .main {}
 
     .side-wrap {

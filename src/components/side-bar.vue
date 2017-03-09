@@ -43,7 +43,7 @@ export default {
     .side-bar-list {
         padding-left: 10px;
         padding-right: 10px;
-        @extend %list-style-none;
+        @extend %li-no;
     }
     .list-title-primary {
         padding-left: 15px;
@@ -53,8 +53,8 @@ export default {
             height: 100%;
             background: $color_e;
             @extend %pos-a;
-            @extend %pos-cont;
-            @extend %pos-t-l;
+            @extend %cont;
+            @include pos-dir($t: 0, $l: 0);
         }
     }
     .router-link-active {

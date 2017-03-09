@@ -1,34 +1,38 @@
 /**
  * rem适配
- * _font    默认 字体 大小
- * _width   默认 屏幕 宽度
+ * @param {Number} base_font    默认字体大小
+ * @param {Number} base_width   默认屏幕宽度 iphone5
+ * @param {Number} max_width    最大屏幕宽度
+ *
+ * 参照 hostcss https://github.com/imochen/hotcss
  */
-
-module.exports = function(base_font, base_width, max_width) {
+export default (base_font, base_width, max_width) => {
     var docEl = document.documentElement;
 
-    base_font = base_font || 100; //默认 字体 大小
-    base_width = base_width || 320; //默认 屏幕 宽度 iphone5
-    max_width = max_width || 1080;
-
-    var dpr = window.devicePixelRatio || 1;
-    var scale = 1 / dpr;
-
-    var viewportEl = docEl.querySelector('[name="viewport"]');
-    var content = 'width=device-width,initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + ', user-scalable=no';
-
-    if (viewportEl) {
-        viewportEl.setAttribute('content', content);
-    } else {
-        viewportEl = document.createElement('meta');
-        viewportEl.setAttribute('name', 'viewport');
-        viewportEl.setAttribute('content', content);
-        document.head.appendChild(viewportEl);
-    }
+    base_font = base_font || 100;
+    base_width = base_width || 320;
+    max_width = max_width || 540;
 
     function setHtmlFont() {
+        var dpr = window.devicePixelRatio || 1;
+        var scale = 1 / dpr;
+
+        var viewportEl = docEl.querySelector('[name="viewport"]');
+        var content = 'width=device-width,initial-scale=' + scale + ', minimum-scale=' + scale + ', maximum-scale=' + scale + ', user-scalable=no';
+
+        if (viewportEl) {
+            viewportEl.setAttribute('content', content);
+        } else {
+            viewportEl = document.createElement('meta');
+            viewportEl.setAttribute('name', 'viewport');
+            viewportEl.setAttribute('content', content);
+            document.head.appendChild(viewportEl);
+        }
+
         var client_width = docEl.clientWidth;
-        client_width = client_width > max_width ? max_width : client_width;
+        if (max_width && client_width / dpr > max_width) {
+            client_width = max_width * dpr;
+        }
 
         docEl.style.fontSize = client_width / base_width * base_font + 'px';
     }

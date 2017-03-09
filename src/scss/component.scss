@@ -29,7 +29,7 @@ $grid_gutter_space: 2% !default;//间距8px 可选
     @extend %clearfix;
 
     &#{$grid_col} {
-        @extend %float-l;
+        @extend %fl;
     }
 
     &#{$grid_gutter} {

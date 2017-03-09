@@ -20,24 +20,6 @@ $size_lg: 0.24rem !default;
 $size_md: 0.20rem !default;
 $size_sm: 0.16rem !default;
 
-// direction
-$directions: (
-    top: top,
-    right: right,
-    bottom: bottom,
-    left: left
-) !default;
-
-/**
- * 获取方位值
- * @param  {String} $d 方位
- * @return {String}    方位
- * e.g. direction(left) => left
- */
-@function direction($d) {
-    @return map-get($directions, $d);
-}
-
 /* placeholder
    ========================================================================== */
 
@@ -45,25 +27,19 @@ $directions: (
     font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 
-%list-style-none {
+%li-no {
     list-style: none;
 }
 
-////////
-// float //
-////////
-%float-l {
-    float: direction(left);
+%mg-auto {
+    margin: 0 auto;
 }
 
-%float-r {
-    float: direction(right);
-}
 
 %clearfix {
     &:before,
     &:after {
-        content: "";
+        @extend %cont;
         display: table;
         font: 0/0 a;
     }
@@ -72,31 +48,98 @@ $directions: (
     }
 }
 
-//////////////
-// position //
-//////////////
-%pos-r {
-    position: relative;
+%fl {
+    float: left;
+}
+
+%fr {
+    float: right;
+}
+
+%transition {
+    transition: all 0.5s ease;
+}
+
+%bgr-no {
+    background-repeat: no-repeat;
+}
+
+%bgp-ct {
+    background-position: center top;
+    @extend %bgr-no;
+}
+
+%bgp-cc {
+    background-position: center center;
+    @extend %bgr-no;
 }
 
 %pos-a {
     position: absolute;
 }
 
-%pos-cont {
+%pos-r {
+    position: relative;
+}
+
+%pos-cc {
+    @extend %pos-a;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+
+%cont {
     content: '';
 }
 
-%pos-t-l {
-    top: 0;
-    left: 0;
+%ov-h {
+    overflow: hidden;
 }
 
-////////////
-// margin //
-////////////
-%mg-0-auto {
-    margin: 0 auto;
+%wh-full {
+    width: 100%;
+    height: 100%;
+}
+
+%tac {
+    text-align: center;
+}
+
+%tal {
+    text-align: left;
+}
+
+%tar {
+    text-align: right;
+}
+
+%tb-full {
+    width: 100%;
+    display: table;
+}
+
+%tb-cell {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+%bdrs-circle {
+    border-radius: 50%;
+}
+
+%cur-p {
+    cursor: pointer;
+}
+
+%dn {
+    display: none;
+}
+
+%db {
+    display: block;
 }
 
 
@@ -105,10 +148,10 @@ $directions: (
    ========================================================================== */
 
 /**
- * rem($px [, $width]?)
- * @param  {[Number]} $px     [px值]
- * @param  {[Number]} $width: $design_width [设计稿宽度]
- * @return {[Number]}         [rem值]
+ * rem($px, $width)
+ * @param  {Number} $px     px值
+ * @param  {Number} $width  设计稿宽度
+ * @return {Number}         rem值
  * e.g.
  * rem(30)
  * rem(30, 750)
@@ -120,7 +163,7 @@ $base_width: 320 !default; //默认 屏幕 宽度
 $design_width: 640 !default; //默认 设计稿 宽度
 
 @function rem($px, $width: $design_width) {
-    @return ($px * $base_width) / ($base_font * $width) * 1rem;
+    @return $px * $base_width / $base_font / $width + rem;
 }
 
 
@@ -128,42 +171,94 @@ $design_width: 640 !default; //默认 设计稿 宽度
    ========================================================================== */
 
 /**
- * border($d [, $width [, $color [, $style]? ]? ]?)
- *
- * $d: [all | top | right | bottom | left]  must
- *
- * default: 1px solid #ccc;
- *
+ * border($d, $w, $c, $s)
+ * @param $d 方位 top | right | bottom | left
+ * @param $w 宽度 1[px|rem]
+ * @param $c 颜色 #ccc
+ * @param $s 样式 solid | dashed | dotted
  * e.g.
- * border(all) => border: default;
- * border(top) => border-top: default;
- *
- * border(all, 0) => border: 0;
- * border(top, 0) => border-top: 0;
- *
- * border(all, 5px, red) => border: 5px solid red;
- * border(top, 5px, red, dashed) => border-top: 5px dashed red;
+ * @include border();           => border: 1px solid #ccc;
+ * @include border($d: bottom); => border-bottom: 1px solid #ccc;
+ * @include border($w: 0); => border: 0;
+ * @include border($d: bottom, $w: 0); => border-bottom: 0;
  */
 $border_width: 1px !default;
 $border_color: #ccc !default;
 $border_style: solid !default;
 
 @mixin border(
-    $d: (),
-    $width: $border_width,
-    $color: $border_color,
-    $style: $border_style
+    $d: null,
+    $w: $border_width,
+    $c: $border_color,
+    $s: $border_style
 ) {
-    $border-name: if($d == all, border, border-#{$d});
+    $border-name: if($d, border-#{$d}, border);
 
-    @if $width {
-        @if $width != 0 {
-            #{$border-name}: $width $style $color;
-        } @else {
-            #{$border-name}: 0;
-        }
+    @if $w != 0 {
+        #{$border-name}: $w $s $c;
     } @else {
-        #{$border-name}: $width $style $color;
+        #{$border-name}: none;
     }
 
+}
+
+
+/**
+ * 背景 cover
+ * @include bg-cover(banner);
+ */
+@mixin bg-cover($img_url) {
+    background-image: url('../images/#{$img_url}.png');
+    @extend %bgp-cc;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/#{$img_url}.png',
+    sizingMethod='scale')\0;
+}
+
+/**
+ * @include blur($size);
+ */
+@mixin blur($size: null) {
+    @extend %ov-h;
+    filter: blur(#{$size});
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$size}')\0;
+}
+
+/**
+ * 方位值
+ * @include dir($t: 20px, $r: 20rem);
+ */
+@mixin dir($t: null,
+$r: null,
+$b: null,
+$l: null) {
+    top: $t;
+    right: $r;
+    bottom: $b;
+    left: $l;
+}
+
+/**
+ * 据对定位 + 方位值
+ * @include pos-dir($t: 20px, $r: 20rem);
+ */
+@mixin pos-dir($t: null,
+$r: null,
+$b: null,
+$l: null) {
+    @extend %pos-a;
+    @include dir($t,
+    $r,
+    $b,
+    $l);
+}
+
+/**
+ * 圆
+ * @include circle($l: 20px);
+ */
+@mixin circle($l: null) {
+    width: $l;
+    height: $l;
+    @extend %bdrs-circle;
 }

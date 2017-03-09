@@ -9,9 +9,9 @@
                 <router-link :to="obj.path">{{obj.name}}</router-link>
             </li>
         </ul>
-        <p>dpr: {{dpr}}</p>
+        <!--<p class="p">dpr: {{dpr}}</p>
         <p>width: {{width}}</p>
-        <p>height: {{height}}</p>
+        <p>height: {{height}}</p>-->
     </div>
 
 </template>
@@ -54,15 +54,22 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../scss/_global.scss';
+
 #page-index {
-    padding: 0 5%;
+    // padding: 0 5%;
     a {
         display: block;
         line-height: 30px;
     }
     li {
-        border: 1px solid #000;
-        margin: 5px 0;
+        margin: 0.05rem 0;
+        @include border($d: bottom);
     }
+    // .p {
+    //     width: 1.6rem;
+    //     height: 0.5rem;
+    //     background: pink;
+    // }
 }
 </style>
