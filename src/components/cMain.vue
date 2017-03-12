@@ -1,10 +1,10 @@
 <template>
 
-    <div id="webpack-vue">
+    <div id="cMain">
         <div class="grid grid-gutter">
 
             <div class="grid-col grid-col-6 side-wrap">
-                <side-bar :routes-list="childRoutes"></side-bar>
+                <c-sidebar :routes-list="childRoutes"></c-sidebar>
             </div>
 
             <div class="grid-col grid-col-18 cont-wrap">
@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import sideBar from '../components/side-bar.vue';
-import routes from '../routes.js';
+import cSidebar from '../../components/cSidebar.vue';
+import routes from '../../routes.js';
 
 export default {
     data() {
@@ -65,15 +65,15 @@ export default {
     //     // 可以访问组件实例 `this`
     //   },
     components: {
-        sideBar
+        cSidebar
     }
 
 }
 </script>
 
 <style lang="scss">
-@import '../scss/_global.scss';
-#webpack-vue {
+@import '../../scss/_global.scss';
+#cMain {
     width: 95%;
     @extend %mg-auto;
     .main {}

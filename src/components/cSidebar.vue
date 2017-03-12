@@ -1,5 +1,5 @@
 <template>
-    <nav id="side-bar">
+    <nav id="cSidebar">
         <ul class="side-bar-list">
 
             <li v-for="list in routesList.list">
@@ -31,7 +31,7 @@ export default {
 
 <style lang="scss">
 @import '../scss/_global.scss';
-#side-bar {
+#cSidebar {
     @include border(right);
     a {
         display: block;

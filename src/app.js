@@ -1,7 +1,9 @@
 import routes from './routes';
 import rem from './service/rem';
+import tool from './service/tool';
 
 // rem();
+tool();
 
 Vue.use(VueRouter);
 const router = new VueRouter({
@@ -20,6 +22,7 @@ const router = new VueRouter({
 
 router.afterEach(route => {
     document.title = route.name;
+    window.scrollTo(0, 0);
 });
 
 require('../src/scss/layout.scss');

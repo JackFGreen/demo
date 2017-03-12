@@ -1,5 +1,5 @@
 <template>
-    <div id="page-cs1">
+    <div id="css-secret">
         <h1>h1</h1>
         <div class="cs1"></div>
         <input type="text">
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
-#page-cs1 {
+#css-secret {
 
     @supports (text-shadow: 0 0 0.3em gray) {
         h1 {

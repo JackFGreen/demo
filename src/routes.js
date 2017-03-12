@@ -1,5 +1,4 @@
 module.exports = [
-    // index
     {
         path: '/index',
         name: '主页',
@@ -14,19 +13,22 @@ module.exports = [
         path: '/test',
         name: 'test',
         component: function(resolve) {
-            require.ensure([], function () {
+            require.ensure([], function() {
                 resolve(require('./pages/test'));
             }, './pages/test');
         }
     },
 
+    /**
+     * webpack-vue start
+     */
     {
         path: '/webpack-vue',
         name: 'webpack-vue',
         component: function(resolve) {
-            require.ensure([], function () {
-                resolve(require('./pages/webpack-vue'));
-            }, './pages/webpack-vue');
+            require.ensure([], function() {
+                resolve(require('./pages/webpack-vue/webpack-vue'));
+            }, './pages/webpack-vue/webpack-vue');
         },
         // 子路由
         children: [
@@ -34,9 +36,9 @@ module.exports = [
                 path: 'base-overview',
                 name: 'base-overview',
                 component: function(resolve) {
-                    require.ensure([], function () {
-                        resolve(require('./pages/webpack-base/base-overview'));
-                    }, './pages/webpack-base/base-overview');
+                    require.ensure([], function() {
+                        resolve(require('./pages/webpack-vue/base-overview'));
+                    }, './pages/webpack-vue/base-overview');
                 }
             },
 
@@ -44,9 +46,9 @@ module.exports = [
                 path: 'dev-overview',
                 name: 'dev-overview',
                 component: function(resolve) {
-                    require.ensure([], function () {
-                        resolve(require('./pages/webpack-dev/dev-overview'));
-                    }, './pages/webpack-dev/dev-overview');
+                    require.ensure([], function() {
+                        resolve(require('./pages/webpack-vue/dev-overview'));
+                    }, './pages/webpack-vue/dev-overview');
                 }
             },
 
@@ -54,14 +56,45 @@ module.exports = [
                 path: 'build-overview',
                 name: 'build-overview',
                 component: function(resolve) {
-                    require.ensure([], function () {
-                        resolve(require('./pages/webpack-build/build-overview'));
-                    }, './pages/webpack-build/build-overview');
+                    require.ensure([], function() {
+                        resolve(require('./pages/webpack-vue/build-overview'));
+                    }, './pages/webpack-vue/build-overview');
                 }
             }
 
         ]
     },
+    /**
+     * webpack-vue end
+     */
+
+    /**
+     * css-secret start
+     */
+    {
+        path: '/css-secret',
+        name: 'css-secret',
+        component: function(resolve) {
+            require.ensure([], function() {
+                resolve(require('./pages/css-secret/css-secret'));
+            }, './pages/css-secret/css-secret');
+        },
+        children: [
+            {
+                path: 'cs1',
+                name: 'cs1',
+                component(resolve) {
+                    require.ensure([], () => {
+                        resolve(require('./pages/css-secret/cs1.vue'));
+                    }, './pages/css-secret/cs1.vue');
+                }
+            }
+        ]
+    },
+    /**
+     * css-secret end
+     */
+
     {
         path: '/',
         redirect: '/index'
