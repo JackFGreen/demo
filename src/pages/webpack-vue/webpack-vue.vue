@@ -6,7 +6,6 @@
                 <h1>webpack-vue</h1>
                 <p>一些配置说明</p>
                 <hr>
-                <router-view></router-view>
             </main>
         </c-side-main>
 
@@ -48,17 +47,6 @@ export default {
 <style lang="scss">
 @import '../../scss/_global.scss';
 #webpack-vue {
-    // width: 95%;
-    // @extend %mg-auto;
-    // .main {}
-
-    // .side-wrap {
-    //     position: fixed;
-    // }
-
-    // .cont-wrap {
-    //     margin-left: 25%;
-    // }
 
 }
 </style>

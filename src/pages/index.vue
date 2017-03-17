@@ -5,8 +5,8 @@
         <input type="text" v-model="filterText">
 
         <ul>
-            <li v-for="obj in filterRoutes">
-                <router-link :to="obj.path">{{obj.name}}</router-link>
+            <li v-for="obj in filterRoutes">{{obj.children}}
+                <!--<router-link :to="obj.path + obj.children[0].path">{{obj.name}}</router-link>-->
             </li>
         </ul>
         <!--<p class="p">dpr: {{dpr}}</p>
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-const routes = require('../routes');
+import routes from '../routes.js'
 
 export default {
     data() {
@@ -26,7 +26,7 @@ export default {
         const routesArr = routes.filter((item, index) => {
             return !hideReg.test(item.path);
         });
-
+console.log(routesArr)
         return {
             dpr: window.devicePixelRatio,
             width: window.innerWidth,

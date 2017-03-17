@@ -48,7 +48,7 @@ const test = () => {
 
 export default {
     data() {
-        this.$nextTick(this.cvs)
+        // this.$nextTick(this.cvs)
 
         // console.log(1)
         /*setTimeout(function() {
@@ -63,6 +63,10 @@ export default {
                     line3'
         }, 1000)
         return {}
+    },
+
+    mounted() {
+        this.cvs()
     },
 
     methods: {

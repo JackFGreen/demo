@@ -1,27 +1,28 @@
 <template>
     <div id="css-secret">
-        <h1>h1</h1>
-        <div class="cs1"></div>
-        <input type="text">
-        <input type="checkbox">
+        <c-side-main>
+            <h1>css secret</h1>
+            <hr>
+        </c-side-main>
     </div>
 </template>
 
 <script>
+import cSideMain from '../../components/cSideMain'
+
 export default {
     data() {
         return {};
+    },
+    components: {
+        cSideMain
     }
 }
+
 </script>
 
 <style lang="scss">
 #css-secret {
-
-    @supports (text-shadow: 0 0 0.3em gray) {
-        h1 {
-            text-shadow: 0 0 0.3em gray;
-        }
-    }
 }
+
 </style>
