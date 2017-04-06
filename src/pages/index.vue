@@ -5,8 +5,8 @@
         <input type="text" v-model="filterText">
 
         <ul>
-            <li v-for="obj in filterRoutes">{{obj.children}}
-                <!--<router-link :to="obj.path + obj.children[0].path">{{obj.name}}</router-link>-->
+            <li v-for="obj in filterRoutes">
+                <router-link :to="obj.path + (obj.children ? '/' + obj.children[0].path : '')">{{obj.name}}</router-link>
             </li>
         </ul>
         <!--<p class="p">dpr: {{dpr}}</p>

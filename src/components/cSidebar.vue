@@ -52,7 +52,6 @@ export default {
             width: 3px;
             height: 100%;
             background: $color_e;
-            @extend %pos-a;
             @extend %cont;
             @include pos-dir($t: 0, $l: 0);
         }
