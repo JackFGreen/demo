@@ -14,7 +14,9 @@ export default {
     },
     mounted() {
         this.$nextTick(() => {
-            console.log($$('#page-cs1'))
+            console.log(tool.$$('#page-cs1'))
+            console.log(tool.testProperty('filter'))
+            console.log(tool.testValue('blur', 'blur(10px)', 'filter'))
         })
     }
 }
