@@ -11,8 +11,14 @@
 export default {
     data() {
         return {};
+    },
+    mounted() {
+        this.$nextTick(() => {
+            console.log($$('#page-cs1'))
+        })
     }
 }
+
 </script>
 
 <style lang="scss">
@@ -24,4 +30,5 @@ export default {
         }
     }
 }
+
 </style>

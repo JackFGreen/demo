@@ -1,6 +1,6 @@
 <template>
 
-<div id="build-overview">
+<div id="page-build-overview">
 
     <h2>编译配置</h2>
 
@@ -127,7 +127,7 @@ export default {
 </script>
 
 <style lang="scss">
-#build-overview {
+#page-build-overview {
 
 }
 </style>

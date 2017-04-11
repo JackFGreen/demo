@@ -1,8 +1,10 @@
 <template>
-    <div id="css-secret">
+    <div id="page-css-secret">
         <c-side-main>
-            <h1>css secret</h1>
-            <hr>
+            <main class="main-title">
+                <h1>css secret</h1>
+                <hr>
+            </main>
         </c-side-main>
     </div>
 </template>
@@ -22,7 +24,6 @@ export default {
 </script>
 
 <style lang="scss">
-#css-secret {
-}
+#page-css-secret {}
 
 </style>

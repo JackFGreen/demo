@@ -1,6 +1,6 @@
 <template>
 
-<div id="dev-overview">
+<div id="page-dev-overview">
 
     <h2>开发配置</h2>
 
@@ -125,7 +125,7 @@ export default {
 </script>
 
 <style lang="scss">
-#dev-overview {
+#page-dev-overview {
 
 }
 </style>

@@ -32,9 +32,8 @@ $size_sm: 0.16rem !default;
 }
 
 %mg-auto {
-    margin: 0 auto;
+    margin: auto;
 }
-
 
 %clearfix {
     &:before,
@@ -88,7 +87,7 @@ $size_sm: 0.16rem !default;
     right: 0;
     bottom: 0;
     top: 0;
-    margin: auto;
+    @extend %mg-auto;
 }
 
 %cont {
@@ -207,10 +206,10 @@ $border_style: solid !default;
  * 背景 cover
  * @include bg-cover(banner);
  */
-@mixin bg-cover($img_url) {
+@mixin bg-cover($img_url, $size: cover) {
     background-image: url('../images/#{$img_url}.png');
     @extend %bgp-cc;
-    background-size: cover;
+    background-size: $size;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/#{$img_url}.png',
     sizingMethod='scale')\0;
 }

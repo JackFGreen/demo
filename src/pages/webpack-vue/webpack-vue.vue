@@ -1,8 +1,8 @@
 <template>
-    <div id="webpack-vue">
+    <div id="page-webpack-vue">
 
         <c-side-main>
-            <main class="main">
+            <main class="main-title">
                 <h1>webpack-vue</h1>
                 <p>一些配置说明</p>
                 <hr>
@@ -46,7 +46,7 @@ export default {
 
 <style lang="scss">
 @import '../../scss/_global.scss';
-#webpack-vue {
+#page-webpack-vue {
 
 }
 </style>

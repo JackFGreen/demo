@@ -1,6 +1,6 @@
 <template>
 
-<div id="base-overview">
+<div id="page-base-overview">
 
     <h2>基本配置</h2>
 
@@ -306,7 +306,7 @@ export default {
 </script>
 
 <style lang="scss">
-#base-overview {
+#page-base-overview {
 
 }
 </style>

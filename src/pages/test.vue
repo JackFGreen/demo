@@ -1,5 +1,5 @@
 <template>
-    <div id="test">
+    <div id="page-test">
 
         <h1><small>test</small></h1>
         <hr>
@@ -95,31 +95,35 @@ export default {
         }
     }
 }
+
 </script>
 
 <style lang="scss">
 @import '../scss/_global.scss';
-.heart {
-    position: relative;
-    width: 50px;
-    height: 50px;
-    background: pink;
-    transform: rotate(45deg);
-    margin: 50px auto;
-    &:before,
-    &:after {
-        content: '';
-        position: absolute;
-        left: -25px;
-        top: 0;
+#page-test {
+    .heart {
+        position: relative;
         width: 50px;
         height: 50px;
-        background: inherit;
-        border-radius: 50%;
-    }
-    &:before {
-        left: 0;
-        top: -25px;
+        background: pink;
+        transform: rotate(45deg);
+        margin: 50px auto;
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background: inherit;
+            border-radius: 50%;
+        }
+        &:before {
+            left: 0;
+            top: -25px;
+        }
     }
 }
+
 </style>
