@@ -1,9 +1,6 @@
 <template>
     <div id="page-cs1">
-        <h1>h1</h1>
-        <div class="cs1"></div>
-        <input type="text">
-        <input type="checkbox">
+        <router-view></router-view>
     </div>
 </template>
 

@@ -6,7 +6,11 @@
 
         <ul>
             <li v-for="obj in filterRoutes">
-                <router-link :to="obj.path + (obj.children ? '/' + obj.children[0].path : '')">{{obj.name}}</router-link>
+                <router-link v-if="!obj.children" :to="obj.path">{{obj.name}}</router-link>
+
+                <router-link v-if="obj.children && !obj.children[0].children" :to="obj.path + '/' + obj.children[0].path">{{obj.name}}</router-link>
+
+                <router-link v-if="obj.children && obj.children[0].children" :to="obj.path + '/' + obj.children[0].path + '/' + obj.children[0].children[0].path">{{obj.name}}</router-link>
             </li>
         </ul>
         <!--<p class="p">dpr: {{dpr}}</p>
@@ -27,6 +31,7 @@ export default {
             return !hideReg.test(item.path);
         });
 console.log(routesArr)
+
         return {
             dpr: window.devicePixelRatio,
             width: window.innerWidth,

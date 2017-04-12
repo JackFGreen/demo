@@ -5,7 +5,9 @@
             <li v-for="list in routesList.list">
                 <p class="list-title-primary">{{list.name}}</p>
                 <p>
-                    <router-link :to="'/' + routesList.parent + '/' + list.path">{{list.path}}</router-link>
+                    <router-link v-if="!list.children" :to="'/' + routesList.parent + '/' + list.path">{{list.name}}</router-link>
+                    
+                    <router-link v-if="list.children" v-for="item in list.children" :to="'/' + routesList.parent + '/' + list.path + '/' + item.path">{{item.name}}</router-link>
                 </p>
             </li>
 
