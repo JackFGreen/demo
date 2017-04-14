@@ -6,7 +6,7 @@
 outline: 10px solid #ccc;
 box-shadow: 0 0 0 1px #ccc;</code></pre>
 
-        <div class="box box1"></div>
+        <div class="box"></div>
 
     </div>
 </template>

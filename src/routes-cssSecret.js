@@ -77,6 +77,15 @@ export default [{
                             resolve(require('./pages/css-secret/cs2/cs2-4.vue'));
                         }, './pages/css-secret/cs2/cs2-4.vue');
                     }
+                },
+                {
+                    path: 'cs2-5',
+                    name: '条纹背景',
+                    component(resolve) {
+                        require.ensure([], () => {
+                            resolve(require('./pages/css-secret/cs2/cs2-5.vue'));
+                        }, './pages/css-secret/cs2/cs2-5.vue');
+                    }
                 }
             ]
         }
