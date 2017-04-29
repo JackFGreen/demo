@@ -15,6 +15,11 @@
         <pre><code>background: linear-gradient(#fb3 33.33%, #58a 0, #58a 66.66%, pink 0);</code></pre>
         <div class="box box4"></div>
 
+        <h2>垂直条纹</h2>
+        <pre><code>background: linear-gradient(right, #fb3 50%, #58a 0);
+    background-size: 30px 100%;</code></pre>
+        <div class="box box5"></div>
+
     </div>
 </template>
 
@@ -54,8 +59,14 @@ export default {
     }
 
     .box {
-        background-size: 100% 50px;        
+        background-size: 100% 50px;
     }
+
+    .box5 {
+        background: linear-gradient(right, #fb3 50%, #58a 0);
+        background-size: 30px 100%;
+    }
+
 }
 
 </style>
