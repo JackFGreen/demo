@@ -24,7 +24,7 @@ html {
 body {
     @extend %font-family;
     font-size: $size_base;
-    color: $color_base;
+    color: $c-base;
     line-height: 1.5;
     word-break: break-all;
 }
@@ -56,10 +56,10 @@ a {
 }
 
 mark {
-    color: $color_b;
+    color: $c-red;
     padding: 2px 4px;
     margin: 0 4px;
-    background: $color_c;
+    background: $c-red-light;
 }
 
 hr {
@@ -73,7 +73,7 @@ pre, code, kbd {
 
 pre {
     white-space: pre-wrap;
-    background: $color_d;
+    background: $c-gray-light;
     padding: 15px;
     @include border(all);
 }

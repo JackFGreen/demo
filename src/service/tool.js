@@ -1,4 +1,5 @@
-export default (() => {
+;
+!((window) => {
     var root = document.documentElement;
 
     var tool = {
@@ -40,8 +41,18 @@ export default (() => {
             }
             root.classList.add('no-' + id);
             return false;
+        },
+        /**
+         * 合并
+         */
+        merge(obj1, obj2) {
+            // var obj = {};
+            for (var k in obj2) {
+                obj1[k] = obj2[k];
+            }
+            return obj1;
         }
     }
 
     window.tool = tool;
-})()
+})(window)

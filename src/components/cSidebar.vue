@@ -6,7 +6,7 @@
                 <p class="list-title-primary">{{list.name}}</p>
                 <p>
                     <router-link v-if="!list.children" :to="'/' + routesList.parent + '/' + list.path">{{list.name}}</router-link>
-                    
+
                     <router-link v-if="list.children" v-for="item in list.children" :to="'/' + routesList.parent + '/' + list.path + '/' + item.path">{{item.name}}</router-link>
                 </p>
             </li>
@@ -53,13 +53,13 @@ export default {
         &:before {
             width: 3px;
             height: 100%;
-            background: $color_e;
+            background: $c-theme;
             @extend %cont;
             @include pos-dir($t: 0, $l: 0);
         }
     }
     .router-link-active {
-        color: $color_e;
+        color: $c-theme;
     }
 }
 </style>

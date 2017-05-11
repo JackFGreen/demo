@@ -42,6 +42,12 @@ function startDev(port) {
     );
 
     new WebpackDevServer(webpack(config), {
+        // proxy: {
+        //     '/api': {
+        //         target: 'http://api.com/',
+        //         changeOrigin: true,
+        //     }
+        // },
         historyApiFallback: true,
         hot: true,
         stats: {
