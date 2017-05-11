@@ -1,19 +1,32 @@
 /**
- * rem适配
+ * rem 适配
  * @param {Number} base_font    默认字体大小
  * @param {Number} base_width   默认屏幕宽度 iphone5
  * @param {Number} max_width    最大屏幕宽度
  *
- * 参照 hostcss https://github.com/imochen/hotcss
+ * 参考 hostcss https://github.com/imochen/hotcss
  */
-export default (base_font, base_width, max_width) => {
+export default (() => {
     var docEl = document.documentElement;
 
-    base_font = base_font || 100;
-    base_width = base_width || 320;
-    max_width = max_width || 540;
+    var base_font = 100;
+    var base_width = 320;
+    var max_width = 540;
 
-    function setHtmlFont() {
+    var rem = {};
+
+    /**
+     * px to rem
+     * @param {Number} design_width 设计稿宽度 默认 640, 可通过 rem.design_width 修改
+     * rem.px2rem(30)
+     */
+    rem.px2rem = (px, design_width) => {
+        design_width = design_width || rem.design_width || 750;
+        return px * base_width / base_font / design_width;
+    }
+
+    // 动态修改 html 字体
+    rem.setHtmlFont = () => {
         var dpr = window.devicePixelRatio || 1;
         var scale = 1 / dpr;
 
@@ -30,13 +43,16 @@ export default (base_font, base_width, max_width) => {
         }
 
         var client_width = docEl.clientWidth;
-        if (max_width && client_width / dpr > max_width) {
-            client_width = max_width * dpr;
+        if (client_width / dpr > max_width) {
+            client_width = max_width * dpr / 1.5;
         }
 
         docEl.style.fontSize = client_width / base_width * base_font + 'px';
     }
-    setHtmlFont();
-    window.onload = setHtmlFont;
-    window.onresize = setHtmlFont;
-}
+    rem.setHtmlFont();
+    window.addEventListener('resize', rem.setHtmlFont, false);
+    window.addEventListener('load', rem.setHtmlFont, false);
+    document.addEventListener('DOMContentLoaded', rem.setHtmlFont, false);
+
+    window.rem = rem;
+})()

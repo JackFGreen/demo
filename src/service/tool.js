@@ -1,6 +1,6 @@
-export default () => {
+export default (() => {
     var root = document.documentElement;
-    
+
     var tool = {
         /**
          * 选择器
@@ -44,4 +44,4 @@ export default () => {
     }
 
     window.tool = tool;
-}
+})()

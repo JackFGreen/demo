@@ -10,7 +10,7 @@ config.entry.lib = [
     'vue-router'
 ];
 config.entry.service = [
-    path.resolve(__dirname, '../src/service/tool.js')
+    path.resolve(__dirname, '../src/service/service.js')
 ];
 config.output.filename = '[name].[chunkhash:7].js';
 
