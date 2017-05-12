@@ -1,21 +1,25 @@
 ;
 !((window) => {
     var root = document.documentElement;
-
     var tool = {
         /**
          * 选择器
          * @param {String} selector css 选择器
-         * @param {Object} context DOM
+         * @param {Object | String} context DOM | css 选择器
+         * tool.$$('.test', tool.$$('#app'))
+         * tool.$$('.test', '#app')
          */
         $$(selector, context) {
             context = context || document;
+            context = check.string(context) ? this.$$(context)[0] : context;
+
             var element = context.querySelectorAll(selector);
             return Array.prototype.slice.call(element);
         },
         /**
          * 检测属性
          * @param {String} property css 属性
+         * tool.testProperty('filter')
          */
         testProperty(property) {
             if (property in root.style) {
@@ -30,6 +34,7 @@
          * @param {String} id 标识
          * @param {String} value 值
          * @param {String} property 属性
+         * tool.testValue('blur', 'blur(10px)', 'filter')
          */
         testValue(id, value, property) {
             var dummy = document.createElement('p');
