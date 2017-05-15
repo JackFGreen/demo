@@ -49,13 +49,38 @@
         },
         /**
          * 合并
+         * tool.merge(obj1, obj2, ...)
+         * tool.merge(true, obj1, obj2, ...)
          */
         merge(obj1, obj2) {
-            // var obj = {};
-            for (var k in obj2) {
-                obj1[k] = obj2[k];
+            var arr = obj1 === true ? Array.prototype.slice.call(arguments, 1) : Array.prototype.slice.call(arguments);
+
+            var obj = {};
+            var i = 0;
+            var len = arr.length;
+
+            if (obj1 !== true) {
+                obj = arr[0];
+                i++;
             }
-            return obj1;
+
+            for (; i < len; i++) {
+                var el = arr[i];
+                loop(obj, el)
+            }
+
+            function loop(obj, el) {
+                for (var k in el) {
+                    if (obj1 === true && typeof el[k] === 'object') {
+                        obj[k] = check.array(el[k]) ? [] : {};
+                        loop(obj[k], el[k])
+                        continue;
+                    }
+                    obj[k] = el[k];
+                }
+            }
+
+            return obj;
         }
     }
 

@@ -3,6 +3,7 @@
     var checkString = {
         string: '[object String]',
         number: '[object Number]',
+        boolean: '[object Boolean]',
         array: '[object Array]',
         object: '[object Object]',
         function: '[object Function]',
@@ -18,6 +19,9 @@
         },
         number(o) {
             return Object.prototype.toString.call(o) === checkString.number;
+        },
+        boolean(o) {
+            return Object.prototype.toString.call(o) === checkString.boolean;
         },
         array(o) {
             return Object.prototype.toString.call(o) === checkString.array;
