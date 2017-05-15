@@ -42,12 +42,12 @@ function startDev(port) {
     );
 
     new WebpackDevServer(webpack(config), {
-        proxy: {
-            '*': {
-                target: 'http://lmd-test.fond.io',
-                changeOrigin: true,
-            }
-        },
+        // proxy: {
+        //     '*': {
+        //         target: 'xxxxx',
+        //         changeOrigin: true
+        //     }
+        // },
         historyApiFallback: true,
         hot: true,
         stats: {
