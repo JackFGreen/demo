@@ -31,6 +31,7 @@ module.exports = {
         alias: {
             // 'jquery': 'jquery/dist/jquery.min',
             'vue': 'vue/dist/vue.js',
+            'vuex': 'vuex/dist/vuex.js',
             'vue-router': 'vue-router/dist/vue-router.js'
         }
     },
@@ -109,6 +110,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             // $: 'jquery',
             Vue: 'vue',
+            Vuex: 'vuex',
             VueRouter: 'vue-router'
         }),
 

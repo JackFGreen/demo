@@ -27,6 +27,7 @@ config.module.loaders.forEach(function(el) {
 
 config.resolve.alias = {
     'vue': 'vue/dist/vue.min.js',
+    'vuex': 'vue/dist/vuex.min.js',
     'vue-router': 'vue-router/dist/vue-router.min.js'
 }
 

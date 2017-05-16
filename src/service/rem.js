@@ -6,7 +6,8 @@
  *
  * 参考 hostcss https://github.com/imochen/hotcss
  */
-export default (() => {
+;
+!(() => {
     var docEl = document.documentElement;
 
     var base_font = 100;

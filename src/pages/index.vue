@@ -1,7 +1,7 @@
 <template>
 
     <div id="page-index">
-        <p @click="test()">路由列表</p>
+        <p>路由列表</p>
         <input type="text" v-model="filterText">
 
         <ul>
@@ -16,12 +16,21 @@
         <!--<p class="p">dpr: {{dpr}}</p>
         <p>width: {{width}}</p>
         <p>height: {{height}}</p>-->
+
+        <!--vuex test start-->
+        <p @click="testFn()">vuex test click here</p>
+        <p>test: {{test}}</p>
+        <p>doneTodos: {{doneTodos}}</p>
+        <p>doneTodosLen: {{doneTodosLen}}</p>
+        <!--vuex test end-->
     </div>
+
 
 </template>
 
 <script>
 import routes from '../routes.js'
+import { mapState, mapGetters } from 'Vuex'
 
 export default {
     data() {
@@ -30,7 +39,7 @@ export default {
         const routesArr = routes.filter((item, index) => {
             return !hideReg.test(item.path);
         });
-console.log(routesArr)
+        console.log(routesArr)
 
         return {
             dpr: window.devicePixelRatio,
@@ -41,6 +50,20 @@ console.log(routesArr)
         }
     },
     computed: {
+        ...mapState({
+            // test() {
+            //     return this.$store.state.test
+            // }
+            test: 'test'
+            // test: state => state.test
+        }),
+        ...mapGetters([
+            'doneTodos',
+            'doneTodosLen'
+        ]),
+        // test() {
+        //     return this.$store.state.test
+        // },
         filterRoutes: function() {
             var _this = this;
             var reg = new RegExp(_this.filterText);
@@ -51,11 +74,13 @@ console.log(routesArr)
         }
     },
     methods: {
-        test() {
-            console.log(this.example)
+        testFn() {
+            // console.log(this.example)
+            this.$store.commit('test')
         }
     }
 }
+
 </script>
 
 <style lang="scss">
@@ -70,11 +95,11 @@ console.log(routesArr)
     li {
         margin: 0.05rem 0;
         @include border($d: bottom);
-    }
-    // .p {
+    } // .p {
     //     width: 1.6rem;
     //     height: 0.5rem;
     //     background: pink;
     // }
 }
+
 </style>

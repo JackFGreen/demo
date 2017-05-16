@@ -1,6 +1,6 @@
 ;
 !((window) => {
-    var store = {
+    var storage = {
         local: {
             /**
              * 设置 localStorage
@@ -102,5 +102,5 @@
         }
     }
 
-    window.store = store;
+    window.storage = storage;
 })(window)

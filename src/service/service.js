@@ -1,7 +1,7 @@
 require('./rem')
 require('./check')
 require('./tool')
-require('./store')
+require('./storage')
 
 require('./layer')
 require('./ajax')

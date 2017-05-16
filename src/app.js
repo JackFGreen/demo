@@ -1,7 +1,10 @@
 import routes from './routes';
 import service from './service/service';
+import store from './store/index';
+console.log(store)
 
 Vue.use(VueRouter);
+
 const router = new VueRouter({
     // mode: 'history',
     // scrollBehavior(to, from, savedPosition) {
@@ -24,6 +27,7 @@ router.afterEach(route => {
 require('../src/scss/layout.scss');
 
 const App = new Vue({
+    store,
     router
 }).$mount('#app');
 
