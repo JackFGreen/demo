@@ -19,7 +19,8 @@
 
         <!--vuex test start-->
         <p @click="testFn()">vuex test click here</p>
-        <p>test: {{test}}</p>
+        <p @click="apiFn()">api test</p>
+        <p>count: {{count}}</p>
         <p>doneTodos: {{doneTodos}}</p>
         <p>doneTodosLen: {{doneTodosLen}}</p>
         <!--vuex test end-->
@@ -30,7 +31,12 @@
 
 <script>
 import routes from '../routes.js'
-import { mapState, mapGetters } from 'Vuex'
+import {
+    mapState,
+    mapGetters,
+    mapMutations,
+    mapActions
+} from 'Vuex'
 
 export default {
     data() {
@@ -51,18 +57,18 @@ export default {
     },
     computed: {
         ...mapState({
-            // test() {
-            //     return this.$store.state.test
+            // count() {
+            //     return this.$store.state.count
             // }
-            test: 'test'
-            // test: state => state.test
+            count: 'count'
+            // count: state => state.count
         }),
         ...mapGetters([
             'doneTodos',
             'doneTodosLen'
         ]),
-        // test() {
-        //     return this.$store.state.test
+        // count() {
+        //     return this.$store.state.count
         // },
         filterRoutes: function() {
             var _this = this;
@@ -74,10 +80,50 @@ export default {
         }
     },
     methods: {
+        ...mapMutations([
+            'plus'
+        ]),
         testFn() {
             // console.log(this.example)
-            this.$store.commit('test')
+            // this.$store.commit('count', 10)
+
+            // this.$store.commit('count', {
+            //     len: this.doneTodosLen,
+            //     lens: ++this.doneTodosLen
+            // })
+
+            // this.$store.commit({
+            //     type: 'count',
+            //     len: this.doneTodosLen,
+            //     lens: ++this.doneTodosLen
+            // })
+
+            this.plus({
+                len: this.doneTodosLen,
+                lens: ++this.doneTodosLen
+            })
+        },
+        ...mapActions([
+            'api',
+            'ac'
+        ]),
+        apiFn() {
+            // this.$store.dispatch('api')
+            // this.api()
+            // this.api()
+            //     .then((res) => {
+            //         console.log('after api')
+            //         console.log(res)
+            //     })
+                // .catch((e) => {
+                //     console.log(e)
+                // })
+
+            this.ac().then(() => {
+                console.log(2)
+            })
         }
+
     }
 }
 
