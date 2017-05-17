@@ -1,6 +1,6 @@
 .layui-m-layer {
     position: relative;
-    z-index: 19891014
+    z-index: 9999;
 }
 
 .layui-m-layer * {
@@ -357,6 +357,19 @@ body .layui-m-layer .layui-m-layer-msg {
 
 /* layer start
    ========================================================================== */
+.layui-m-layer {
+    .layui-m-layerchild,
+    .layui-m-layerbtn span {
+
+        font-size: rem(30);
+    }
+
+    .xhr-info {
+        font-size: rem(24);
+        color: #ccc;
+        margin: 0;
+    }
+}
 .layui-m-layer0 {
     .layui-m-layershade {
         background: rgba(0, 0, 0, 0.6);
@@ -371,14 +384,14 @@ body .layui-m-layer .layui-m-layer-msg {
         }
     }
     .layui-m-layercont {
-        padding: 30px 15px;
-        line-height: 22px;
+        padding: rem(60) rem(30);
+        line-height: 1.5;
         text-align: center;
     }
     .layui-m-layerbtn {
         position: relative;
-        height: 40px;
-        line-height: 40px;
+        height: rem(80);
+        line-height: rem(80);
         font-size: 0;
         text-align: center;
         background: #fff;
@@ -394,14 +407,15 @@ body .layui-m-layer .layui-m-layer-msg {
     .layui-m-layer-msg {
         background: rgba(0, 0, 0, 0.6) !important;
         .layui-m-layercont {
-            padding: 10px 20px;
+            padding: rem(20) rem(40);
         }
     }
 }
 
 // layer loading start
-$size: 30px;
-$size2: 2px;
+$size-min: 30px;
+$size: rem(60);
+$size2: rem(4);
 $c-loading-bg: $c-white;
 .layui-m-layer3, .layui-m-layer4 {
     .layui-m-layershade {
@@ -416,6 +430,8 @@ $c-loading-bg: $c-white;
         .layui-m-layerload {
             width: $size;
             height: $size;
+            min-width: $size-min;
+            min-height: $size-min;
             border-radius: 50%;
             box-shadow: 0 0 0 $size2 $c-theme inset;
             position: relative;
@@ -458,7 +474,7 @@ $c-loading-bg: $c-white;
         background: transparent;
     }
     .layui-m-layercont {
-        padding: 30px 50px;
+        padding: rem(60) rem(100);
     }
 }
 // layer loading end
