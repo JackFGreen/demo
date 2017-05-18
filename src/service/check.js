@@ -1,48 +1,35 @@
 ;
 !(() => {
-    var checkString = {
-        string: '[object String]',
-        number: '[object Number]',
-        boolean: '[object Boolean]',
-        array: '[object Array]',
-        object: '[object Object]',
-        function: '[object Function]',
-        reg: '[object RegExp]',
-        date: '[object Date]',
-        undefined: '[object Undefined]',
-        null: '[object Null]'
-    }
-
     var check = {
-        string(o) {
-            return Object.prototype.toString.call(o) === checkString.string;
+        isString(o) {
+            return Object.prototype.toString.call(o) === '[object String]';
         },
-        number(o) {
-            return Object.prototype.toString.call(o) === checkString.number;
+        isNumber(o) {
+            return Object.prototype.toString.call(o) === '[object Number]';
         },
-        boolean(o) {
-            return Object.prototype.toString.call(o) === checkString.boolean;
+        isBoolean(o) {
+            return Object.prototype.toString.call(o) === '[object Boolean]';
         },
-        array(o) {
-            return Object.prototype.toString.call(o) === checkString.array;
+        isArray(o) {
+            return Object.prototype.toString.call(o) === '[object Array]';
         },
-        object(o) {
-            return Object.prototype.toString.call(o) === checkString.object;
+        isObject(o) {
+            return Object.prototype.toString.call(o) === '[object Object]';
         },
-        function(o) {
-            return Object.prototype.toString.call(o) === checkString.function;
+        isFunction(o) {
+            return Object.prototype.toString.call(o) === '[object Function]';
         },
-        reg(o) {
-            return Object.prototype.toString.call(o) === checkString.reg;
+        isReg(o) {
+            return Object.prototype.toString.call(o) === '[object RegExp]';
         },
-        date(o) {
-            return Object.prototype.toString.call(o) === checkString.date;
+        isDate(o) {
+            return Object.prototype.toString.call(o) === '[object Date]';
         },
-        undefined(o) {
-            return Object.prototype.toString.call(o) === checkString.undefined;
+        isUndefined(o) {
+            return Object.prototype.toString.call(o) === '[object Undefined]';
         },
-        null(o) {
-            return Object.prototype.toString.call(o) === checkString.null;
+        isNull(o) {
+            return Object.prototype.toString.call(o) === '[object Null]';
         }
     }
 

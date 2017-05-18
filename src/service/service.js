@@ -1,7 +1,7 @@
-require('./rem')
-require('./check')
-require('./tool')
-require('./storage')
+import './rem'
+import './check'
+import './tool'
+import './storage'
 
-require('./layer')
-require('./ajax')
+import './layer'
+import './ajax'

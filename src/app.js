@@ -24,7 +24,8 @@ router.afterEach(route => {
     window.scrollTo(0, 0);
 });
 
-require('../src/scss/layout.scss');
+import css from '../src/scss/layout.scss';
+console.log(css)
 
 const App = new Vue({
     store,

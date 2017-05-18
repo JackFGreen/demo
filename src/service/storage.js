@@ -9,7 +9,7 @@
              */
             set(name, val, type) {
                 if (type) {
-                    if (!check.string(name) || !val) {
+                    if (!check.isString(name) || !val) {
                         layer.warning('参数错误')
                         return;
                     }
@@ -17,7 +17,7 @@
                     return;
                 }
 
-                if (!check.string(name) || !check.string(val)) {
+                if (!check.isString(name) || !check.isString(val)) {
                     layer.warning('参数错误')
                     return;
                 }
@@ -29,7 +29,7 @@
              * @param {Number} type 1 返回 object 否则 返回 string
              */
             get(name, type) {
-                if (!check.string(name)) {
+                if (!check.isString(name)) {
                     layer.warning('参数错误')
                     return;
                 }
@@ -49,7 +49,7 @@
                     localStorage.clear();
                     return;
                 }
-                if (!check.string(name)) {
+                if (!check.isString(name)) {
                     layer.warning('参数错误')
                     return;
                 }

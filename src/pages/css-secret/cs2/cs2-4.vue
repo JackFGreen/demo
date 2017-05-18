@@ -2,9 +2,9 @@
     <div id="page-cs2-4">
         <h2>{{$route.name}}</h2>
 
-        <pre><code>border-radius: 10px;
+        <div class="eg-code"><pre><code>border-radius: 10px;
 outline: 10px solid #ccc;
-box-shadow: 0 0 0 1px #ccc;</code></pre>
+box-shadow: 0 0 0 1px #ccc;</code></pre></div>
 
         <div class="box"></div>
 

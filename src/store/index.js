@@ -1,6 +1,6 @@
 Vue.use(Vuex);
 
-var store = new Vuex.Store({
+export default new Vuex.Store({
     state: {
         count: 1,
         todos: [
@@ -31,11 +31,11 @@ var store = new Vuex.Store({
     },
     getters: {
         doneTodos(state) {
-            console.log(state)
+            // console.log(state)
             return state.todos.filter(o => o.done === true)
         },
         doneTodosLen(state, getters) {
-            console.log(getters)
+            // console.log(getters)
             return getters.doneTodos.length
         }
     },
@@ -78,5 +78,3 @@ var store = new Vuex.Store({
         }
     }
 })
-
-export default store

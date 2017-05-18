@@ -7,10 +7,10 @@
         </ul>
 
         <p>默认状态下，背景会延伸到边框的区域下层</p>
-        <pre><code>background-clip: border-box;</code></pre>
+        <div class="eg-code"><pre><code>background-clip: border-box;</code></pre></div>
         <div class="box"></div>
-        
-        <pre><code>background-clip: padding-box;</code></pre>
+
+        <div class="eg-code"><pre><code>background-clip: padding-box;</code></pre></div>
         <div class="box box-diff"></div>
     </div>
 </template>

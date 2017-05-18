@@ -15,10 +15,10 @@
             <mark>padding</mark>
             <mark>margin</mark>模拟所需空间，不会响应鼠标事件，比如悬停或点击</p>
 
-        <pre><code>box-shadow: 0 0 0 10px #ccc, 0 0 0 30px #ddd;</code></pre>
+        <div class="eg-code"><pre><code>box-shadow: 0 0 0 10px #ccc, 0 0 0 30px #ddd;</code></pre></div>
         <div class="box box1" @click="click()">点击或悬停查看效果</div>
 
-        <pre><code>box-shadow: 0 0 0 10px #ccc inset, 0 0 0 30px #ddd inset;</code></pre>
+        <div class="eg-code"><pre><code>box-shadow: 0 0 0 10px #ccc inset, 0 0 0 30px #ddd inset;</code></pre></div>
         <div class="box box1 box1-diff" @click="click()">点击或悬停查看效果</div>
 
         <h3>outline</h3>

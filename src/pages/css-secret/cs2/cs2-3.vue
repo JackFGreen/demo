@@ -16,15 +16,15 @@
         </ul>
 
         <h3>background-position</h3>
-        <pre><code>background-position: right 30px bottom 10px;</code></pre>
+        <div class="eg-code"><pre><code>background-position: right 30px bottom 10px;</code></pre></div>
         <div class="box box1"></div>
 
         <h3>background-origin</h3>
-        <pre><code>background-origin: content-box;</code></pre>
+        <div class="eg-code"><pre><code>background-origin: content-box;</code></pre></div>
         <div class="box box2">content content content content</div>
-        
+
         <h3>calc()</h3>
-        <pre><code>background-position: calc(100% - 30px) calc(100% - 10px);</code></pre>
+        <div class="eg-code"><pre><code>background-position: calc(100% - 30px) calc(100% - 10px);</code></pre></div>
         <div class="box box3"></div>
 
     </div>

@@ -71,15 +71,13 @@ pre, code, kbd {
     @extend %font-family;
 }
 
-pre {
-    white-space: pre-wrap;
-    background: $c-gray-light;
-    padding: 15px;
-    @include border(all);
-}
-
 .eg-code {
-    padding: 0 20px;
+    pre {
+        white-space: pre-wrap;
+        background: $c-gray-light;
+        padding: 15px;
+        @include border(all);
+    }
 }
 
 /* @media screen and (max-width: 640px) {

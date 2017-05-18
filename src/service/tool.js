@@ -11,7 +11,7 @@
          */
         $$(selector, context) {
             context = context || document;
-            context = check.string(context) ? this.$$(context)[0] : context;
+            context = check.isString(context) ? this.$$(context)[0] : context;
 
             var element = context.querySelectorAll(selector);
             return Array.prototype.slice.call(element);
@@ -72,7 +72,7 @@
             function loop(obj, el) {
                 for (var k in el) {
                     if (obj1 === true && typeof el[k] === 'object') {
-                        obj[k] = check.array(el[k]) ? [] : {};
+                        obj[k] = check.isArray(el[k]) ? [] : {};
                         loop(obj[k], el[k])
                         continue;
                     }
