@@ -36,7 +36,7 @@ import {
     mapGetters,
     mapMutations,
     mapActions
-} from 'Vuex'
+} from 'vuex'
 
 export default {
     data() {
