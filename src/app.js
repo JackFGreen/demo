@@ -1,7 +1,9 @@
+import './service/service';
 import routes from './routes';
-import service from './service/service';
 import store from './store/index';
 console.log(store)
+
+import '../src/scss/layout.scss';
 
 Vue.use(VueRouter);
 
@@ -23,9 +25,6 @@ router.afterEach(route => {
     document.title = route.name;
     window.scrollTo(0, 0);
 });
-
-import css from '../src/scss/layout.scss';
-console.log(css)
 
 const App = new Vue({
     store,

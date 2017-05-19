@@ -1,5 +1,5 @@
 ;
-!(() => {
+!((window) => {
     var check = {
         isString(o) {
             return Object.prototype.toString.call(o) === '[object String]';

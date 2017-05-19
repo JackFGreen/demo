@@ -7,7 +7,7 @@
  * 参考 hostcss https://github.com/imochen/hotcss
  */
 ;
-!(() => {
+!((window) => {
     var docEl = document.documentElement;
 
     var base_font = 100;
@@ -56,4 +56,4 @@
     document.addEventListener('DOMContentLoaded', rem.setHtmlFont, false);
 
     window.rem = rem;
-})()
+})(window)
