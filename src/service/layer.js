@@ -234,26 +234,26 @@
          * @param {Number} type loading 样式 2: 3个点  3,4: 转圈 3有白色遮罩
          */
         loading(type, close) {
-            layer.open({
+            return layer.open({
                 shadeClose: close || false,
                 type: type || 2
             })
         },
         tip(msg, option) {
-            layer.open(tool.merge({
+            return layer.open(tool.merge({
                 skin: 'msg',
                 content: msg || '没有内容',
                 time: 2
             }, option))
         },
         warning(msg, option) {
-            layer.open(tool.merge({
+            return layer.open(tool.merge({
                 content: msg || '没有内容',
                 btn: ['确定']
             }, option))
         },
         confirm(msg, option) {
-            layer.open(tool.merge({
+            return layer.open(tool.merge({
                 content: msg || '没有内容',
                 btn: ['确定', '取消']
             }, option))

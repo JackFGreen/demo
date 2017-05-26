@@ -48,6 +48,7 @@ function startDev(port) {
         //         changeOrigin: true
         //     }
         // },
+        disableHostCheck: true,
         historyApiFallback: true,
         hot: true,
         stats: {
