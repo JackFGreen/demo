@@ -9,7 +9,8 @@ config.entry.lib = [
     'vue',
     'vuex',
     'vue-router',
-    'axios'
+    'axios',
+    'qs'
 ];
 config.entry.service = [
     path.resolve(__dirname, '../src/service/service.js')
