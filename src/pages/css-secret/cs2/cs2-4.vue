@@ -4,7 +4,7 @@
 
         <div class="eg-code"><pre><code>border-radius: 10px;
 outline: 10px solid #ccc;
-box-shadow: 0 0 0 1px #ccc;</code></pre></div>
+box-shadow: 0 0 0 5px #ccc;</code></pre></div>
 
         <div class="box"></div>
 
@@ -15,11 +15,6 @@ box-shadow: 0 0 0 1px #ccc;</code></pre></div>
 export default {
     data() {
         return {};
-    },
-    methods: {
-        click() {
-            alert(1)
-        }
     }
 }
 
