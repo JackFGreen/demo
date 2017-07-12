@@ -86,6 +86,15 @@ export default [{
                             resolve(require('./pages/css-secret/cs2/cs2-5.vue'));
                         }, './pages/css-secret/cs2/cs2-5.vue');
                     }
+                },
+                {
+                    path: 'cs2-6',
+                    name: '复杂的背景图案',
+                    component(resolve) {
+                        require.ensure([], () => {
+                            resolve(require('./pages/css-secret/cs2/cs2-6.vue'));
+                        }, './pages/css-secret/cs2/cs2-6.vue');
+                    }
                 }
             ]
         }
