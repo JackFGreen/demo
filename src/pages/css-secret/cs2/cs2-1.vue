@@ -3,7 +3,7 @@
         <h2>{{$route.name}}</h2>
 
         <ul>
-            <li><a href="http://www.w3school.com.cn/cssref/pr_background-clip.asp" target="_blank">background-clip</a></li>
+            <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-clip" target="_blank">background-clip</a></li>
         </ul>
 
         <p>默认状态下，背景会延伸到边框的区域下层</p>

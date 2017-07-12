@@ -3,8 +3,8 @@
         <h2>{{$route.name}}</h2>
 
         <ul>
-            <li><a href="http://www.w3school.com.cn/cssref/pr_box-shadow.asp" target="_blank">box-shadow</a></li>
-            <li><a href="http://www.w3school.com.cn/cssref/pr_outline.asp" target="_blank">outline</a></li>
+            <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-shadow" target="_blank">box-shadow</a></li>
+            <li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline" target="_blank">outline</a></li>
         </ul>
 
         <h3>box-shadow</h3>

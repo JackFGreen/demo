@@ -23,6 +23,12 @@
         <div class="box box5"></div>
 
         <h2>斜向条纹</h2>
+        <ul>
+            <li>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Using_CSS_gradients#Repeating_gradients" target="_blank">repeating-gradients</a>
+                <a href="http://caniuse.com/#feat=css-repeating-gradients" target="_blank">caniuse</a>
+            </li>
+        </ul>
         <button @click="setBgs6()">点击设置 background-size: 30px 30px;</button>
         <div class="eg-code"><pre><code>background: linear-gradient(45deg, #fb3 50%, #58a 0);</code></pre></div>
         <div class="box box6"></div>

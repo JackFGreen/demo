@@ -4,11 +4,11 @@
 
         <ul>
             <li>
-                <a href="http://www.w3school.com.cn/cssref/pr_background-position.asp" target="_blank">background-position</a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-position-x" target="_blank">background-position-x</a>
                 <a href="http://caniuse.com/#search=background-position-x" target="_blank">caniuse</a>
             </li>
             <li>
-                <a href="http://www.w3school.com.cn/cssref/pr_background-origin.asp" target="_blank">background-origin</a>
+                <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-origin" target="_blank">background-origin</a>
             </li>
             <li>
                 <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/calc" target="_blank">calc()</a>
