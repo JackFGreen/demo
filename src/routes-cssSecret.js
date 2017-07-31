@@ -95,6 +95,15 @@ export default [{
                             resolve(require('./pages/css-secret/cs2/cs2-6.vue'));
                         }, './pages/css-secret/cs2/cs2-6.vue');
                     }
+                },
+                {
+                    path: 'cs2-7',
+                    name: '伪随机背景',
+                    component(resolve) {
+                        require.ensure([], () => {
+                            resolve(require('./pages/css-secret/cs2/cs2-7.vue'));
+                        }, './pages/css-secret/cs2/cs2-7.vue');
+                    }
                 }
             ]
         }

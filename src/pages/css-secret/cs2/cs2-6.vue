@@ -37,6 +37,12 @@
                                     linear-gradient(45deg, #bbb 25%, transparent 0);
     background-position: 0 0, 50px 50px;</code></pre></div>
         <div class="box box6"></div>
+
+        <h4>svg</h4>
+        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill-opacity=".25" >
+            <rect x="50" width="50" height="50" />
+            <rect y="50" width="50" height="50" />
+        </svg>
     </div>
 </template>
 
@@ -109,6 +115,13 @@ export default {
                           linear-gradient(45deg, transparent 75%, #bbb 0),
                           linear-gradient(45deg, #bbb 25%, transparent 0);
         background-position: 0 0, 50px 50px;
+        // background: #eee url('data:image/svg+xml,\
+        //             <svg xmlns="http://www.w3.org/2000/svg" \
+        //                 width="100" height="100" \
+        //                 fill-opacity=".25">\
+        //             <rect x="50" width="50" height="50" /> \
+        //             <rect y="50" width="50" height="50" /> \
+        //             </svg>');
         background-size: 20px 20px;
     }
 
