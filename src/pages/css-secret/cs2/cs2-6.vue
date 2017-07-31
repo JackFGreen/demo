@@ -31,8 +31,11 @@
         <div class="box box5"></div>
 
         <h3>棋盘</h3>
-        <div class="eg-code"><pre><code>background-image: radial-gradient(hsla(200, 100%, 50%, 1) 20%, transparent 0),
-                                    radial-gradient(hsla(200, 100%, 50%, 1) 20%, transparent 0);</code></pre></div>
+        <div class="eg-code"><pre><code>background-image: linear-gradient(45deg, #bbb 25%, transparent 0),
+                                    linear-gradient(45deg, transparent 75%, #bbb 0),
+                                    linear-gradient(45deg, transparent 75%, #bbb 0),
+                                    linear-gradient(45deg, #bbb 25%, transparent 0);
+    background-position: 0 0, 50px 50px;</code></pre></div>
         <div class="box box6"></div>
     </div>
 </template>
@@ -101,8 +104,11 @@ export default {
 
     .box6 {
         background: #ccc;
-        // background-image: linear-gradient(#bbb 50%, transparent 0), linear-gradient(90deg, #bbb 50%, transparent 0);
-        background: repeating-conic-gradient(#bbb 0, #bbb 25%, #eee 0, #eee 50%);
+        background-image: linear-gradient(45deg, #bbb 25%, transparent 0),
+                          linear-gradient(45deg, transparent 75%, #bbb 0),
+                          linear-gradient(45deg, transparent 75%, #bbb 0),
+                          linear-gradient(45deg, #bbb 25%, transparent 0);
+        background-position: 0 0, 50px 50px;
         background-size: 20px 20px;
     }
 
