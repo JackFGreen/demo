@@ -115,6 +115,25 @@ export default [{
                     }
                 }
             ]
+        },
+        {
+            path: 'cs3',
+            name: '形状',
+            component(resolve) {
+                require.ensure([], () => {
+                    resolve(require('./pages/css-secret/cs3/cs3.vue'));
+                }, './pages/css-secret/cs3/cs3.vue');
+            },
+            children: [{
+                    path: 'cs3-1',
+                    name: '自适应的椭圆',
+                    component(resolve) {
+                        require.ensure([], () => {
+                            resolve(require('./pages/css-secret/cs3/cs3-1.vue'));
+                        }, './pages/css-secret/cs3/cs3-1.vue');
+                    }
+                }
+            ]
         }
     ]
 }];
