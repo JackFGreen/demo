@@ -104,6 +104,15 @@ export default [{
                             resolve(require('./pages/css-secret/cs2/cs2-7.vue'));
                         }, './pages/css-secret/cs2/cs2-7.vue');
                     }
+                },
+                {
+                    path: 'cs2-8',
+                    name: '连续的图像边框',
+                    component(resolve) {
+                        require.ensure([], () => {
+                            resolve(require('./pages/css-secret/cs2/cs2-8.vue'));
+                        }, './pages/css-secret/cs2/cs2-8.vue');
+                    }
                 }
             ]
         }
