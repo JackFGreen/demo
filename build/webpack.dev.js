@@ -42,6 +42,7 @@ function startDev(port) {
     );
 
     new WebpackDevServer(webpack(config), {
+        disableHostCheck: true,
         historyApiFallback: true,
         hot: true,
         stats: {

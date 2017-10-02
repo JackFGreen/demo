@@ -5,7 +5,7 @@
         <p @click="test()">路由列表</p>
         <input type="text" v-model="filterText">
 
-        <router-link v-for="obj in filterRoutes" :to="obj.path">{{obj.name}}</router-link>
+        <router-link v-for="(obj, index) in filterRoutes" :to="obj.path" :key="index">{{obj.name}}</router-link>
     </div>
 
 </template>
